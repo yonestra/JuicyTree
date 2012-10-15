@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FruitApple.h"
+#import "FruitBanana.h"
 
 @interface GameManager : NSObject
+
+- (NSInteger)createFruitsId;
 
 @end

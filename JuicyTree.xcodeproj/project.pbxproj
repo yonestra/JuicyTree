@@ -10,6 +10,11 @@
 		20FA23B7162C79DD009110FF /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23B6162C79DD009110FF /* CollectionViewController.m */; };
 		20FA23BB162C7B0C009110FF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BA162C7B0C009110FF /* GameManager.m */; };
 		20FA23BD162C7C09009110FF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23BC162C7C09009110FF /* ViewController.xib */; };
+		20FA23C0162C7DE3009110FF /* Fruits.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BF162C7DE3009110FF /* Fruits.m */; };
+		20FA23C3162C7F3D009110FF /* FruitApple.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23C2162C7F3D009110FF /* FruitApple.m */; };
+		20FA23C6162C81CE009110FF /* apple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23C5162C81CE009110FF /* apple.jpeg */; };
+		20FA23C8162C81D6009110FF /* banana.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23C7162C81D6009110FF /* banana.jpeg */; };
+		20FA23CB162C851A009110FF /* FruitBanana.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23CA162C8519009110FF /* FruitBanana.m */; };
 		FB9D4C83162C75B0002F42D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9D4C82162C75B0002F42D4 /* UIKit.framework */; };
 		FB9D4C85162C75B0002F42D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9D4C84162C75B0002F42D4 /* Foundation.framework */; };
 		FB9D4C87162C75B0002F42D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9D4C86162C75B0002F42D4 /* CoreGraphics.framework */; };
@@ -28,6 +33,14 @@
 		20FA23B9162C7B0C009110FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../GameManager.h; sourceTree = "<group>"; };
 		20FA23BA162C7B0C009110FF /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = ../GameManager.m; sourceTree = "<group>"; };
 		20FA23BC162C7C09009110FF /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		20FA23BE162C7DE3009110FF /* Fruits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruits.h; sourceTree = "<group>"; };
+		20FA23BF162C7DE3009110FF /* Fruits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fruits.m; sourceTree = "<group>"; };
+		20FA23C1162C7F3D009110FF /* FruitApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FruitApple.h; sourceTree = "<group>"; };
+		20FA23C2162C7F3D009110FF /* FruitApple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FruitApple.m; sourceTree = "<group>"; };
+		20FA23C5162C81CE009110FF /* apple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpeg; sourceTree = "<group>"; };
+		20FA23C7162C81D6009110FF /* banana.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banana.jpeg; sourceTree = "<group>"; };
+		20FA23C9162C8519009110FF /* FruitBanana.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FruitBanana.h; sourceTree = "<group>"; };
+		20FA23CA162C8519009110FF /* FruitBanana.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FruitBanana.m; sourceTree = "<group>"; };
 		FB9D4C7E162C75B0002F42D4 /* JuicyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuicyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9D4C82162C75B0002F42D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FB9D4C84162C75B0002F42D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,9 +84,24 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		20FA23C4162C81BB009110FF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				20FA23C7162C81D6009110FF /* banana.jpeg */,
+				20FA23C5162C81CE009110FF /* apple.jpeg */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		FB9D4C73162C75B0002F42D4 = {
 			isa = PBXGroup;
 			children = (
+				20FA23BE162C7DE3009110FF /* Fruits.h */,
+				20FA23BF162C7DE3009110FF /* Fruits.m */,
+				20FA23C1162C7F3D009110FF /* FruitApple.h */,
+				20FA23C2162C7F3D009110FF /* FruitApple.m */,
+				20FA23C9162C8519009110FF /* FruitBanana.h */,
+				20FA23CA162C8519009110FF /* FruitBanana.m */,
 				FB9D4C88162C75B0002F42D4 /* JuicyTree */,
 				FB9D4C81162C75B0002F42D4 /* Frameworks */,
 				FB9D4C7F162C75B0002F42D4 /* Products */,
@@ -101,6 +129,7 @@
 		FB9D4C88162C75B0002F42D4 /* JuicyTree */ = {
 			isa = PBXGroup;
 			children = (
+				20FA23C4162C81BB009110FF /* Resource */,
 				20FA23B8162C79E2009110FF /* View */,
 				20FA23B9162C7B0C009110FF /* GameManager.h */,
 				20FA23BA162C7B0C009110FF /* GameManager.m */,
@@ -181,6 +210,8 @@
 				FB9D4C97162C75B0002F42D4 /* Default@2x.png in Resources */,
 				FB9D4C99162C75B0002F42D4 /* Default-568h@2x.png in Resources */,
 				20FA23BD162C7C09009110FF /* ViewController.xib in Resources */,
+				20FA23C6162C81CE009110FF /* apple.jpeg in Resources */,
+				20FA23C8162C81D6009110FF /* banana.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +227,9 @@
 				FB9D4C9C162C75B0002F42D4 /* ViewController.m in Sources */,
 				20FA23B7162C79DD009110FF /* CollectionViewController.m in Sources */,
 				20FA23BB162C7B0C009110FF /* GameManager.m in Sources */,
+				20FA23C0162C7DE3009110FF /* Fruits.m in Sources */,
+				20FA23C3162C7F3D009110FF /* FruitApple.m in Sources */,
+				20FA23CB162C851A009110FF /* FruitBanana.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

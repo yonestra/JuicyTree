@@ -10,4 +10,25 @@
 
 @implementation GameManager
 
+/**
+  つかいかたメモ
+  GameManager* gameManager = [GameManager sharedGameManager];
+ 
+ **/
+ 
+static GameManager* sharedGameManager = nil;
+
++ (GameManager*)sharedGameManager {
+    if (sharedGameManager == nil) {
+        sharedGameManager = [[self alloc] init];
+    }
+    return sharedGameManager;
+}
+
+
+- (NSInteger)createFruitId {
+    int r = arc4random() % 2;
+    return r;
+}
+
 @end
