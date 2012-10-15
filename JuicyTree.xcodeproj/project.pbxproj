@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		20FA23B7162C79DD009110FF /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23B6162C79DD009110FF /* CollectionViewController.m */; };
 		20FA23BB162C7B0C009110FF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BA162C7B0C009110FF /* GameManager.m */; };
+		20FA23BD162C7C09009110FF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23BC162C7C09009110FF /* ViewController.xib */; };
 		FB9D4C83162C75B0002F42D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9D4C82162C75B0002F42D4 /* UIKit.framework */; };
 		FB9D4C85162C75B0002F42D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9D4C84162C75B0002F42D4 /* Foundation.framework */; };
 		FB9D4C87162C75B0002F42D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9D4C86162C75B0002F42D4 /* CoreGraphics.framework */; };
@@ -26,6 +27,7 @@
 		20FA23B6162C79DD009110FF /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = ../CollectionViewController.m; sourceTree = "<group>"; };
 		20FA23B9162C7B0C009110FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../GameManager.h; sourceTree = "<group>"; };
 		20FA23BA162C7B0C009110FF /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = ../GameManager.m; sourceTree = "<group>"; };
+		20FA23BC162C7C09009110FF /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		FB9D4C7E162C75B0002F42D4 /* JuicyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuicyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9D4C82162C75B0002F42D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FB9D4C84162C75B0002F42D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +66,7 @@
 				20FA23B6162C79DD009110FF /* CollectionViewController.m */,
 				FB9D4C9A162C75B0002F42D4 /* ViewController.h */,
 				FB9D4C9B162C75B0002F42D4 /* ViewController.m */,
+				20FA23BC162C7C09009110FF /* ViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -98,9 +101,9 @@
 		FB9D4C88162C75B0002F42D4 /* JuicyTree */ = {
 			isa = PBXGroup;
 			children = (
+				20FA23B8162C79E2009110FF /* View */,
 				20FA23B9162C7B0C009110FF /* GameManager.h */,
 				20FA23BA162C7B0C009110FF /* GameManager.m */,
-				20FA23B8162C79E2009110FF /* View */,
 				FB9D4C91162C75B0002F42D4 /* AppDelegate.h */,
 				FB9D4C92162C75B0002F42D4 /* AppDelegate.m */,
 				FB9D4C89162C75B0002F42D4 /* Supporting Files */,
@@ -177,6 +180,7 @@
 				FB9D4C95162C75B0002F42D4 /* Default.png in Resources */,
 				FB9D4C97162C75B0002F42D4 /* Default@2x.png in Resources */,
 				FB9D4C99162C75B0002F42D4 /* Default-568h@2x.png in Resources */,
+				20FA23BD162C7C09009110FF /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
