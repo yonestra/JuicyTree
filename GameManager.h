@@ -12,6 +12,7 @@
 
 @interface GameManager : NSObject
 
-- (NSInteger)createFruitsId;
++ (GameManager*)sharedGameManager;
+- (NSInteger)createFruitId;
 
 @end

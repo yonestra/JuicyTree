@@ -26,6 +26,9 @@
     
     [call_btn addTarget:self action:@selector(getFruits:)
        forControlEvents:UIControlEventTouchUpInside];
+    
+    // make gamemanager
+    gameManager = [GameManager sharedGameManager];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,6 +47,8 @@
 - (void)getFruits:(UIButton*)sender
 {
     LOG(@"hey!");
+    NSInteger fruidId = [gameManager createFruitId];
+    LOG(@"fruitId = %d", fruidId);
 }
 
 @end

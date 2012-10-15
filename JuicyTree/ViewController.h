@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameManager.h"
 
 @interface ViewController : UIViewController {
     UIButton *call_btn;
+    GameManager* gameManager;
 }
 
 @end
