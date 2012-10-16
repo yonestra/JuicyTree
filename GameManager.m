@@ -60,7 +60,7 @@ static GameManager* sharedGameManager = nil;
     // 5秒ごとに実を作る
     if (time%5 == 0) {
         [self createFruits];
-        // ViewController側にPUSHする処理
+        // TODO: ViewController側にPUSHする処理
     }
 }
 
@@ -69,6 +69,7 @@ static GameManager* sharedGameManager = nil;
 // 実らせる果実を決める
 // TODO: ツリーレベルを考慮
 - (Fruits*)selectFruits {
+    LOG_CURRENT_METHOD;
     Fruits* fruit;
     int r = arc4random() % 2;
     switch (r) {
@@ -86,6 +87,7 @@ static GameManager* sharedGameManager = nil;
 
 // 実を作る
 - (Fruits*)createFruits {
+    LOG_CURRENT_METHOD;
     // 場所決める
     NSInteger position = [self getBrunkPosition];
     
@@ -105,6 +107,7 @@ static GameManager* sharedGameManager = nil;
 // 実を複数作る
 // return: NSArray<Fruits>
 - (NSArray*)createFruitsArray:(NSInteger)count {
+    LOG_CURRENT_METHOD;
     NSMutableArray* fruitsArray = [NSMutableArray array];
     
     Fruits* fruit;
@@ -150,6 +153,7 @@ static GameManager* sharedGameManager = nil;
 
 // 木進化判定メソッド
 - (void)judgeLevelUpTree {
+    LOG(@"現在のポイント: %d", totalPoint);
     // あるポイントを超えたら木を進化させる
     if (totalPoint > 200) {
         [self levelUpTree];
