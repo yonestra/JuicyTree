@@ -10,6 +10,8 @@
 
 @implementation Fruits
 
+@synthesize positionId;
+
 - (void)dealloc {
     [name release], name=nil;
     [imageView release], imageView=nil;

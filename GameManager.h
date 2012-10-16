@@ -10,9 +10,13 @@
 #import "FruitApple.h"
 #import "FruitBanana.h"
 
-@interface GameManager : NSObject
+@interface GameManager : NSObject {
+    NSMutableDictionary* FruitsOnTreeDictionary; // posId -> fruit
+    NSInteger totalPoint;
+    NSInteger time;
+}
 
 + (GameManager*)sharedGameManager;
-- (NSInteger)createFruitId;
+- (Fruits*)createFruits;
 
 @end
