@@ -174,9 +174,8 @@ static GameManager* sharedGameManager = nil;
 - (void)cropFruits:(Fruits*)fruits {
     // ポイントを加算
     totalPoint += fruits.points;
-    [self judgeLevelUpTree];
-    
-
+    //[self judgeLevelUpTree];
+    LOG(@"とくてん: %d", totalPoint);
     
     // スペース空いたことを知らせる
     NSInteger key = fruits.positionId;
