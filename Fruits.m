@@ -11,11 +11,12 @@
 @implementation Fruits
 
 @synthesize positionId;
+@synthesize imageName;
 
 
 - (Fruits*)init {
     self = [super init];
-    if (!self) {
+    if (self) {
         //        self.imageName = @"apple.jpeg";
         int r = arc4random() % 20;
         switch (r) {

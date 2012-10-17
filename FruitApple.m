@@ -12,7 +12,7 @@
 
 - (FruitApple*)init {
     self = [super init];
-    if (!self) {
+    if (self) {
         self.identifier = APPLE_FRUIT;
         self.name = @"りんご";
 //        self.imageName = @"apple.jpeg";

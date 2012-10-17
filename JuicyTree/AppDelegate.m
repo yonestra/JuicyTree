@@ -70,8 +70,8 @@
     
     // 時差を取得
     NSTimeInterval duration = [startDate timeIntervalSinceDate:finDate];
-    GameManager* gameManager = [GameManager sharedGameManager];
-    [gameManager checkStatusByLaunchApplication:duration];
+    //GameManager* gameManager = [GameManager sharedGameManager];
+    //[gameManager checkStatusByLaunchApplication:duration];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
