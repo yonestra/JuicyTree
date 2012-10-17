@@ -23,6 +23,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tree_lv4.png"]];
+    backgroundImageView.frame = self.view.frame;
+    [self.view addSubview:backgroundImageView];
+    [backgroundImageView release];
+    
     // コレクションビューを表示するボタン
     UIButton* goCollectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     goCollectionButton.frame = CGRectMake(260, 10, 50, 50);
@@ -73,39 +78,39 @@
         fruitImageView.frame = [GameManager positionId2Rect:fruit.positionId];
         fruitImageView.image = [UIImage imageNamed:@"banana.jpeg"];
         fruitImageView.fruit = fruit;
-//        UIPanGestureRecognizer *panGesture_1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+        //        UIPanGestureRecognizer *panGesture_1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
         //    [fruit_1 addGestureRecognizer:panGesture_1];
-//        [panGesture_1 release];
+        //        [panGesture_1 release];
         [self.view addSubview:fruitImageView];
     }
     
     
-//    FruitOnTreeImageView *fruit_1 = [[[FruitOnTreeImageView alloc] initWithFrame:CGRectMake(POS_1_X, POS_1_Y, 50, 50)] autorelease];
-//    fruit_1.image = [UIImage imageNamed:@"banana.jpeg"];
-//    fruit_1.userInteractionEnabled = YES;
-//    fruit_1.fruit = [[[FruitApple alloc] init] autorelease];
-//    UIPanGestureRecognizer *panGesture_1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-//    //    [fruit_1 addGestureRecognizer:panGesture_1];
-//    [panGesture_1 release];
-//    [self.view addSubview:fruit_1];
-//    
-//    FruitOnTreeImageView *fruit_2 = [[[FruitOnTreeImageView alloc] initWithFrame:CGRectMake(POS_2_X, POS_2_Y, 50, 50)] autorelease];
-//    fruit_2.image = [UIImage imageNamed:@"banana.jpeg"];
-//    fruit_2.userInteractionEnabled = YES;
-//    fruit_2.fruit = [[[FruitApple alloc] init] autorelease];
-//    UIPanGestureRecognizer *panGesture_2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-//    //    [fruit_2 addGestureRecognizer:panGesture_2];
-//    [panGesture_2 release];
-//    [self.view addSubview:fruit_2];
-//    
-//    FruitOnTreeImageView *fruit_3 = [[[FruitOnTreeImageView alloc] initWithFrame:CGRectMake(POS_3_X, POS_3_Y, 50, 50)] autorelease];
-//    fruit_3.image = [UIImage imageNamed:@"banana.jpeg"];
-//    fruit_3.userInteractionEnabled = YES;
-//    fruit_3.fruit = [[[FruitApple alloc] init] autorelease];
-//    UIPanGestureRecognizer *panGesture_3 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-//    //    [fruit_3 addGestureRecognizer:panGesture_3];
-//    [panGesture_3 release];
-//    [self.view addSubview:fruit_3];
+    //    FruitOnTreeImageView *fruit_1 = [[[FruitOnTreeImageView alloc] initWithFrame:CGRectMake(POS_1_X, POS_1_Y, 50, 50)] autorelease];
+    //    fruit_1.image = [UIImage imageNamed:@"banana.jpeg"];
+    //    fruit_1.userInteractionEnabled = YES;
+    //    fruit_1.fruit = [[[FruitApple alloc] init] autorelease];
+    //    UIPanGestureRecognizer *panGesture_1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    //    //    [fruit_1 addGestureRecognizer:panGesture_1];
+    //    [panGesture_1 release];
+    //    [self.view addSubview:fruit_1];
+    //    
+    //    FruitOnTreeImageView *fruit_2 = [[[FruitOnTreeImageView alloc] initWithFrame:CGRectMake(POS_2_X, POS_2_Y, 50, 50)] autorelease];
+    //    fruit_2.image = [UIImage imageNamed:@"banana.jpeg"];
+    //    fruit_2.userInteractionEnabled = YES;
+    //    fruit_2.fruit = [[[FruitApple alloc] init] autorelease];
+    //    UIPanGestureRecognizer *panGesture_2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    //    //    [fruit_2 addGestureRecognizer:panGesture_2];
+    //    [panGesture_2 release];
+    //    [self.view addSubview:fruit_2];
+    //    
+    //    FruitOnTreeImageView *fruit_3 = [[[FruitOnTreeImageView alloc] initWithFrame:CGRectMake(POS_3_X, POS_3_Y, 50, 50)] autorelease];
+    //    fruit_3.image = [UIImage imageNamed:@"banana.jpeg"];
+    //    fruit_3.userInteractionEnabled = YES;
+    //    fruit_3.fruit = [[[FruitApple alloc] init] autorelease];
+    //    UIPanGestureRecognizer *panGesture_3 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    //    //    [fruit_3 addGestureRecognizer:panGesture_3];
+    //    [panGesture_3 release];
+    //    [self.view addSubview:fruit_3];
     
     
 }
