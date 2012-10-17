@@ -210,11 +210,11 @@ static GameManager* sharedGameManager = nil;
         case 0:
             return CGRectMake(10, 10, w, h);
         case 1:
-            return CGRectMake(20, 20, w, h);
-        case 2:
             return CGRectMake(30, 30, w, h);
+        case 2:
+            return CGRectMake(50, 50, w, h);
         default:
-            return CGRectMake((positionId+1)*10, (positionId+1)*10, w, h);
+            return CGRectMake((positionId+1)*20+10, (positionId+1)*20+10, w, h);
     }
 }
 

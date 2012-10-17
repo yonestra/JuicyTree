@@ -41,6 +41,12 @@
             case 19: self.imageName = @"pman.png"; break;
             case 20: self.imageName = @"potechi.png"; break;
             case 21: self.imageName = @"risu.png"; break;
+            case 22: self.imageName = @"shimeji.png"; break;
+            case 23: self.imageName = @"soccerball.png"; break;
+            case 24: self.imageName = @"suika.png"; break;
+            case 25: self.imageName = @"tako.png"; break;
+            case 26: self.imageName = @"ushi.png"; break;
+            default: self.imageName = @"hatena.png"; break;
         }
     }
     
