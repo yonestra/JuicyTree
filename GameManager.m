@@ -71,7 +71,8 @@ static GameManager* sharedGameManager = nil;
     LOG(@"time = %d", time);
     
     // 2分ごとに実を作る
-    if (time%120 == 0) {
+//    if (time%120 == 0) {
+    if (time%2 == 0) {
         [self createFruitsArray:1];
         // TODO: ViewController側にPUSHする処理
     }
@@ -81,7 +82,7 @@ static GameManager* sharedGameManager = nil;
 - (void)checkStatusByLaunchApplication:(NSInteger)duration {
     LOG_CURRENT_METHOD;
     LOG(@"duration = %d", duration);
-    int numOfFruits = duration/120;
+    int numOfFruits = duration/2;
     if (numOfFruits >=20) {
         numOfFruits = 20;
     }
@@ -136,7 +137,7 @@ static GameManager* sharedGameManager = nil;
     Fruits* fruit;
     for (int i=0; i<count; i++) {
         if ( (fruit = [self createFruits]) != nil) {
-            [fruitsArray addObject:[self createFruits]];
+            [fruitsArray addObject:fruit];
         } else {
             break;
         }
@@ -148,7 +149,7 @@ static GameManager* sharedGameManager = nil;
 // お願いの際には、実の情報Arrayを渡す
 - (void)notificateMainView:(NSArray*)fruitsArray {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter postNotificationName:@"createFruits" object:fruitsArray userInfo:nil];
+    [notificationCenter postNotificationName:@"createFruits" object:self userInfo:fruitsArray];
 }
 
 // 木の空いてる場所を返す

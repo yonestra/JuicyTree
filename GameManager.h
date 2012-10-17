@@ -24,5 +24,6 @@
 - (void)checkStatusByLaunchApplication:(NSInteger)duration;
 - (void)cropFruits:(Fruits*)fruits;
 - (void)judgeLevelUpTree:(NSInteger)point;
++ (CGRect)positionId2Rect:(NSInteger)positionId;
 
 @end

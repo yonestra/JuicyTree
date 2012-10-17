@@ -10,7 +10,6 @@
 #import "GameManager.h"
 
 @interface ViewController : UIViewController {
-    UIButton *call_btn;
     GameManager* gameManager;
 }
 
