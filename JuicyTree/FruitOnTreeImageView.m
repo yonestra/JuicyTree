@@ -19,6 +19,7 @@
     if (self) {
         // Initialization code
         LOG_CURRENT_METHOD;
+        self.userInteractionEnabled = YES;
     }
     return self;
 }
