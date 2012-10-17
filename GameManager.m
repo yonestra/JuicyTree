@@ -206,16 +206,25 @@ static GameManager* sharedGameManager = nil;
     float w = FRUITS_WIDTH;
     float h = FRUITS_HEIGHT;
     
-    switch (positionId) {
-        case 0:
-            return CGRectMake(10, 10, w, h);
-        case 1:
-            return CGRectMake(30, 30, w, h);
-        case 2:
-            return CGRectMake(50, 50, w, h);
-        default:
-            return CGRectMake((positionId+1)*20+10, (positionId+1)*20+10, w, h);
-    }
+//    switch (positionId) {
+//        case 0:
+//            return CGRectMake(10, 10, w, h);
+//        case 1:
+//            return CGRectMake(60, 10, w, h);
+//        case 2:
+//            return CGRectMake(150, 30, w, h);
+//        default:
+//            return CGRectMake((positionId+1)*20+10, (positionId+1)*20+10, w, h);
+//    }
+    
+    int x = arc4random() % 280;
+    x += 20;
+    
+    int y = arc4random() % 380;
+    y += 50;
+    
+    return CGRectMake(x, y, w, h);
+    
 }
 
 @end
