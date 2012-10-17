@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204F75B0162EF3FE001C7BB3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */; };
 		20FA23B7162C79DD009110FF /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23B6162C79DD009110FF /* CollectionViewController.m */; };
 		20FA23BB162C7B0C009110FF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BA162C7B0C009110FF /* GameManager.m */; };
 		20FA23BD162C7C09009110FF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23BC162C7C09009110FF /* ViewController.xib */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		20FA23B5162C79DD009110FF /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = ../CollectionViewController.h; sourceTree = "<group>"; };
 		20FA23B6162C79DD009110FF /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = ../CollectionViewController.m; sourceTree = "<group>"; };
 		20FA23B9162C7B0C009110FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../GameManager.h; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204F75B0162EF3FE001C7BB3 /* QuartzCore.framework in Frameworks */,
 				FB9D4C83162C75B0002F42D4 /* UIKit.framework in Frameworks */,
 				FB9D4C85162C75B0002F42D4 /* Foundation.framework in Frameworks */,
 				FB9D4C87162C75B0002F42D4 /* CoreGraphics.framework in Frameworks */,
@@ -102,6 +105,7 @@
 		FB9D4C73162C75B0002F42D4 = {
 			isa = PBXGroup;
 			children = (
+				204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */,
 				FBED19A0162DED9B00F145C0 /* Constants.h */,
 				20FA23BE162C7DE3009110FF /* Fruits.h */,
 				20FA23BF162C7DE3009110FF /* Fruits.m */,

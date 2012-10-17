@@ -12,10 +12,12 @@
 
 @implementation AppDelegate
 
+@synthesize navController;
+
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+    [navController release];
     [super dealloc];
 }
 
@@ -23,8 +25,10 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    ViewController *vc = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    self.navController = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    [self.navController setNavigationBarHidden:YES animated:NO];
+    self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
     return YES;
 }

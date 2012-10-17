@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 Toraemon. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ViewController.h"
+#import "CollectionViewController.h"
 #import "FruitOnTreeImageView.h"
 
 @interface ViewController ()
@@ -28,6 +30,14 @@
     [call_btn addTarget:self action:@selector(getFruits:)
        forControlEvents:UIControlEventTouchUpInside];
     
+    // コレクションビューを表示するボタン
+    UIButton* goCollectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    goCollectionButton.frame = CGRectMake(260, 10, 50, 50);
+    [goCollectionButton addTarget:self
+                           action:@selector(pushCollectionButton)
+                 forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:goCollectionButton];
+    
     // make gamemanager
     gameManager = [GameManager sharedGameManager];
 }
@@ -47,8 +57,8 @@
 
 - (void)getFruits:(UIButton*)sender
 {
-    NSInteger fruidId = [gameManager createFruitId];
-    LOG(@"fruitId = %d", fruidId);
+//    NSInteger fruidId = [gameManager createFruitId];
+//    LOG(@"fruitId = %d", fruidId);
     
     //    NSMutableDictionary *pos_x = [NSMutableDictionary dictionaryWithObjectsAndKeys:
     //                                  POS_1_X, 1,
@@ -103,5 +113,21 @@
     //    NSLog(@"pan. translation: %@, velocity: %@", NSStringFromCGPoint(point), NSStringFromCGPoint(velocity));
 }
 
+- (void)pushCollectionButton {
+    LOG_CURRENT_METHOD;
+    
+    // コレクションビューに遷移
+    CATransition *animation = [CATransition animation];
+    [animation setType:kCATransitionFade];
+    [animation setDuration:0.5];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    [animation setDelegate:self];
+    
+    CollectionViewController* collectionVC = [[CollectionViewController alloc] init];
+    
+    [[self.navigationController.view layer] addAnimation:animation forKey:nil];
+    [self.navigationController pushViewController:collectionVC animated:NO];
+    [collectionVC release];
+}
 
 @end

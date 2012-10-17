@@ -35,4 +35,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+// interface builderを使わない場合はこのメソッドが必要
+-(void)loadView{
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view release];
+}
+
 @end
