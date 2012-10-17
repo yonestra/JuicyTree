@@ -15,8 +15,7 @@
     if (!self) {
         self.identifier = BANANA_FRUIT;
         self.name = @"バナナ";
-        self.imageView = [[[UIImageView alloc] init] autorelease];
-        self.imageView.image = [UIImage imageNamed:@"banana.jpeg"];
+//        self.imageName = @"banana.jpeg";
         self.points = 20;
         self.requiredTreeLevel = 1;
     }
