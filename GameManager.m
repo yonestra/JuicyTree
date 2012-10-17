@@ -39,7 +39,7 @@ static GameManager* sharedGameManager = nil;
     self = [super init];
     if (self) {
         // TODO: NSUserDefaultから読み込む
-        FruitsOnTreeDictionary = [NSMutableDictionary dictionary];
+        FruitsOnTreeDictionary = [[NSMutableDictionary alloc] init];
         totalPoint = 0;
         time = 0;
         treeLevel = 1;
@@ -175,6 +175,8 @@ static GameManager* sharedGameManager = nil;
     // ポイントを加算
     totalPoint += fruits.points;
     [self judgeLevelUpTree];
+    
+
     
     // スペース空いたことを知らせる
     NSInteger key = fruits.positionId;
