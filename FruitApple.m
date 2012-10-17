@@ -17,8 +17,8 @@
         self.name = @"りんご";
         self.imageView = [[[UIImageView alloc] init] autorelease];
         self.imageView.image = [UIImage imageNamed:@"apple.jpeg"];
-        self.points = 10000000000;
-        self.tree_level = 1;
+        self.points = 10;
+        self.requiredTreeLevel = 1;
     }
     
     return self;

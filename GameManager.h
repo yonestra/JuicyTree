@@ -10,13 +10,19 @@
 #import "FruitApple.h"
 #import "FruitBanana.h"
 
+#define FRUITS_WIDTH  50
+#define FRUITS_HEIGHT 50
+
 @interface GameManager : NSObject {
     NSMutableDictionary* FruitsOnTreeDictionary; // posId -> fruit
     NSInteger totalPoint;
     NSInteger time;
+    NSInteger treeLevel;
 }
 
 + (GameManager*)sharedGameManager;
-- (Fruits*)createFruits;
+- (void)checkStatusByLaunchApplication:(NSInteger)duration;
+- (void)cropFruits:(Fruits*)fruits;
+- (void)judgeLevelUpTree:(NSInteger)point;
 
 @end

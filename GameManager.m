@@ -15,7 +15,17 @@
   GameManager* gameManager = [GameManager sharedGameManager];
  
  **/
- 
+
+/**
+　よねちゃん実装しといてメモ
+　【果物つくって通知】
+　NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+　[notificationCenter addObserver:self selector:@selector(hogehoge:) name:@"createFruits" object:fruitsArray];
+ **/
+
+
+
+
 static GameManager* sharedGameManager = nil;
 
 + (GameManager*)sharedGameManager {
@@ -32,6 +42,8 @@ static GameManager* sharedGameManager = nil;
         FruitsOnTreeDictionary = [NSMutableDictionary dictionary];
         totalPoint = 0;
         time = 0;
+        treeLevel = 1;
+        [self startTimer];
     }
     return self;
 }
@@ -45,23 +57,35 @@ static GameManager* sharedGameManager = nil;
     NSTimer *timer;
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                              target:self
-                                           selector:@selector(checkStatusByOneMinutes)
+                                           selector:@selector(checkStatusByOneMinutes:)
                                            userInfo:nil
                                             repeats:YES];
 
 }
 
 // 1秒ごとに状態をチェック
--(void)checkStatusByOneMinutes:(NSTimer*)timer
+- (void)checkStatusByOneMinutes:(NSTimer*)timer
 {
     // 時間カウント
     time++;
+    LOG(@"time = %d", time);
     
-    // 5秒ごとに実を作る
-    if (time%5 == 0) {
-        [self createFruits];
+    // 2分ごとに実を作る
+    if (time%120 == 0) {
+        [self createFruitsArray:1];
         // TODO: ViewController側にPUSHする処理
     }
+}
+
+// アプリ起動時に状態をチェック
+- (void)checkStatusByLaunchApplication:(NSInteger)duration {
+    LOG_CURRENT_METHOD;
+    LOG(@"duration = %d", duration);
+    int numOfFruits = duration/120;
+    if (numOfFruits >=20) {
+        numOfFruits = 20;
+    }
+    [self createFruitsArray:numOfFruits];
 }
 
 
@@ -105,8 +129,7 @@ static GameManager* sharedGameManager = nil;
 }
 
 // 実を複数作る
-// return: NSArray<Fruits>
-- (NSArray*)createFruitsArray:(NSInteger)count {
+- (void)createFruitsArray:(NSInteger)count {
     LOG_CURRENT_METHOD;
     NSMutableArray* fruitsArray = [NSMutableArray array];
     
@@ -118,7 +141,14 @@ static GameManager* sharedGameManager = nil;
             break;
         }
     }
-    return fruitsArray;
+    [self notificateMainView:fruitsArray];
+}
+
+// メイン画面に「実を作って！」とお願いする
+// お願いの際には、実の情報Arrayを渡す
+- (void)notificateMainView:(NSArray*)fruitsArray {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:@"createFruits" object:fruitsArray userInfo:nil];
 }
 
 // 木の空いてる場所を返す
@@ -152,10 +182,9 @@ static GameManager* sharedGameManager = nil;
 }
 
 // 木進化判定メソッド
-- (void)judgeLevelUpTree {
-    LOG(@"現在のポイント: %d", totalPoint);
+- (void)judgeLevelUpTree:(NSInteger)point {
     // あるポイントを超えたら木を進化させる
-    if (totalPoint > 200) {
+    if (point > 200) {
         [self levelUpTree];
     }
 }
@@ -163,9 +192,28 @@ static GameManager* sharedGameManager = nil;
 // 木進化メソッド
 - (void)levelUpTree {
     LOG_CURRENT_METHOD;
+    treeLevel++;
+    
     // ポイントの処理
-    // tree_levelを+1
     // ViewControllerにお知らせ
+}
+
+
+// posID -> CGRectの変換
++ (CGRect)positionId2Rect:(NSInteger)positionId {
+    float w = FRUITS_WIDTH;
+    float h = FRUITS_HEIGHT;
+    
+    switch (positionId) {
+        case 0:
+            return CGRectMake(10, 10, w, h);
+        case 1:
+            return CGRectMake(20, 20, w, h);
+        case 2:
+            return CGRectMake(30, 30, w, h);
+        default:
+            return CGRectMake((positionId+1)*10, (positionId+1)*10, w, h);
+    }
 }
 
 @end

@@ -18,7 +18,7 @@ enum {
     NSString* name;
     UIImageView* imageView;
     NSInteger points;
-    NSInteger tree_level;
+    NSInteger requiredTreeLevel;
     NSInteger positionId;
 }
 
@@ -26,7 +26,7 @@ enum {
 @property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain) UIImageView* imageView;
 @property (nonatomic, assign) NSInteger points;
-@property (nonatomic, assign) NSInteger tree_level;
+@property (nonatomic, assign) NSInteger requiredTreeLevel;
 @property (nonatomic, assign) NSInteger positionId;
 
 
