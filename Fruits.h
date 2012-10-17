@@ -16,7 +16,7 @@ enum {
 @interface Fruits : NSObject {
     NSInteger identifier;
     NSString* name;
-    UIImageView* imageView;
+    NSString* imageName;
     NSInteger points;
     NSInteger requiredTreeLevel;
     NSInteger positionId;
@@ -24,7 +24,7 @@ enum {
 
 @property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, retain) NSString* name;
-@property (nonatomic, retain) UIImageView* imageView;
+@property (nonatomic, retain) NSString* imageName;
 @property (nonatomic, assign) NSInteger points;
 @property (nonatomic, assign) NSInteger requiredTreeLevel;
 @property (nonatomic, assign) NSInteger positionId;

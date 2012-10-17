@@ -15,8 +15,7 @@
     if (!self) {
         self.identifier = APPLE_FRUIT;
         self.name = @"りんご";
-        self.imageView = [[[UIImageView alloc] init] autorelease];
-        self.imageView.image = [UIImage imageNamed:@"apple.jpeg"];
+//        self.imageName = @"apple.jpeg";
         self.points = 10;
         self.requiredTreeLevel = 1;
     }
