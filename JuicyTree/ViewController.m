@@ -66,7 +66,10 @@
         //        UIPanGestureRecognizer *panGesture_1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
         //    [fruit_1 addGestureRecognizer:panGesture_1];
         //        [panGesture_1 release];
+         CGAffineTransform scale = CGAffineTransformMakeScale(0.0, 0.0);
+        [fruitImageView setTransform:scale];
         [self.view addSubview:fruitImageView];
+        [fruitImageView bornAmination];
     }
     
 }

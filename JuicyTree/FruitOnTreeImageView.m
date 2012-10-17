@@ -86,6 +86,53 @@
     
 }
 
+- (void) bornAmination
+{
+    [UIView animateWithDuration:SHAKE_DURATION
+                          delay:0.0f
+     //                        options:UIViewAnimationOptionCurveLinear
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^
+     {
+         CGAffineTransform scale = CGAffineTransformMakeScale(1.5, 1.5);
+         [self setTransform:scale];
+         
+     } completion:^(BOOL finished) {
+         [UIView animateWithDuration:SHAKE_DURATION
+                               delay:0.0f
+                             options:UIViewAnimationOptionCurveEaseOut
+                          animations:^
+          {
+              CGAffineTransform scale = CGAffineTransformMakeScale(1.0, 1.0);
+              [self setTransform:scale];
+              
+          } completion:^(BOOL finished) {
+              [UIView animateWithDuration:SHAKE_DURATION
+                                    delay:0.0f
+                                  options:UIViewAnimationOptionCurveEaseOut
+                               animations:^
+               {
+                   CGAffineTransform scale = CGAffineTransformMakeScale(1.2, 1.2);
+                   [self setTransform:scale];
+                   
+               } completion:^(BOOL finished) {
+                   [UIView animateWithDuration:1.0f / 2.5f
+                                         delay:0
+                    //                             options:UIViewAnimationOptionOverrideInheritedDuration
+                                       options:UIViewAnimationOptionCurveEaseOut
+                                    animations:^
+                    {
+                        CGAffineTransform scale = CGAffineTransformMakeScale(1.0, 1.0);
+                        [self setTransform:scale];
+                    } completion:^(BOOL finished)
+                    {
+                        // none
+                    }];
+               }];
+          }];
+     }];
+}
+
 // TODO: こすって取れるように
 //- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 //{

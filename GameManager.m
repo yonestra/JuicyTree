@@ -16,16 +16,6 @@
  
  **/
 
-/**
-　よねちゃん実装しといてメモ
-　【果物つくって通知】
-　NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-　[notificationCenter addObserver:self selector:@selector(hogehoge:) name:@"createFruits" object:fruitsArray];
- **/
-
-
-
-
 static GameManager* sharedGameManager = nil;
 
 + (GameManager*)sharedGameManager {
@@ -72,7 +62,7 @@ static GameManager* sharedGameManager = nil;
     
     // 2分ごとに実を作る
 //    if (time%120 == 0) {
-    if (time%2 == 0) {
+    if (time%3 == 0) {
         [self createFruitsArray:1];
         // TODO: ViewController側にPUSHする処理
     }
