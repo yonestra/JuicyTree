@@ -119,7 +119,7 @@
     // コレクションビューに遷移
     CATransition *animation = [CATransition animation];
     [animation setType:kCATransitionFade];
-    [animation setDuration:0.5];
+    [animation setDuration:0.3];
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [animation setDelegate:self];
     
