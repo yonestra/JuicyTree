@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Fruits.h"
 
-@interface FruitOnTreeImageView : UIImageView
+@interface FruitOnTreeImageView : UIImageView {
+    Fruits *fruit;
+}
+
+@property (retain, nonatomic) Fruits *fruit;
 
 @end
