@@ -46,6 +46,10 @@
     
     // 終了時の日時を記憶
     NSDate* finData = [NSDate date];
+    LOG(@"%@", finData);
+    
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:finData forKey:@"FIN_DATE"];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -58,7 +62,15 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     // 起動時の日時を取得
-    NSDate* finData = [NSDate date];
+    NSDate* startDate = [NSDate date];
+    
+    // 前回終了時の時間を取得
+    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+    NSDate* finDate = [ud objectForKey:@"FIN_DATE"];
+    
+    // 時差を取得
+    NSTimeInterval duration = [startDate timeIntervalSinceDate:finDate];
+    LOG(@"duration = %f", duration);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

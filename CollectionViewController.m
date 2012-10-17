@@ -42,12 +42,51 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view release];
     
+    // 戻るボタン
     UIButton* backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     backButton.frame = CGRectMake(0, 0, 100, 50);
     [backButton setTitle:@"もどる" forState:UIControlStateNormal];
     backButton.center = self.view.center;
     [backButton addTarget:self action:@selector(pushBackButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
+    
+    // コレクションImageView
+    int i=0, j=0;
+    UIImage* image = [UIImage imageNamed:@"apple.jpeg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(50+(50+35)*i, 100+(50+35)*j, 50, 50);
+    [self.view addSubview:imageView];
+    
+    i++;
+    image = [UIImage imageNamed:@"banana.jpeg"];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(50+(50+35)*i, 100+(50+35)*j, 50, 50);
+    [self.view addSubview:imageView];
+    
+    i++;
+    image = [UIImage imageNamed:@"apple.jpeg"];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(50+(50+35)*i, 100+(50+35)*j, 50, 50);
+    [self.view addSubview:imageView];
+    
+    j++;
+    i=0;
+    image = [UIImage imageNamed:@"apple.jpeg"];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(50+(50+35)*i, 150+(50+35)*j, 50, 50);
+    [self.view addSubview:imageView];
+    
+    i++;
+    image = [UIImage imageNamed:@"apple.jpeg"];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(50+(50+35)*i, 150+(50+35)*j, 50, 50);
+    [self.view addSubview:imageView];
+    
+    i++;
+    image = [UIImage imageNamed:@"apple.jpeg"];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(50+(50+35)*i, 150+(50+35)*j, 50, 50);
+    [self.view addSubview:imageView];    
 }
 
 - (void)pushBackButton {

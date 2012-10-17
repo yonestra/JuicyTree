@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CollectionViewController : UIViewController
+@interface CollectionViewController : UIViewController {
+    NSInteger page; // ページ番号
+}
 
 @end
