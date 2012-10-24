@@ -10,6 +10,7 @@
 
 @interface CollectionViewController : UIViewController {
     NSInteger page; // ページ番号
+    UILabel* pageLabel; // ページラベル
 }
 
 @end

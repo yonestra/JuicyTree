@@ -12,6 +12,10 @@
 
 @synthesize positionId;
 @synthesize imageName;
+@synthesize identifier;
+@synthesize name;
+@synthesize points;
+@synthesize requiredTreeLevel;
 
 
 - (Fruits*)init {
@@ -59,5 +63,40 @@
     [imageName release], imageName=nil;
     [super dealloc];
 }
+
+@end
+
+
+/** りんご **/
+@implementation FruitApple
+
+- (FruitApple*)init {
+    if (self = [super init]) {
+        self.identifier = APPLE;
+        self.name = @"りんご";
+        self.imageName = @"apple.png";
+        self.points = 10;
+        self.requiredTreeLevel = 1;
+    }
+    return self;
+}
+
+@end
+
+/** バナナ **/
+@implementation FruitBanana
+
+- (FruitBanana*)init {
+    if (self = [super init]) {
+        self.identifier = BANANA;
+        self.name = @"バナナ";
+        self.imageName = @"banana.png";
+        self.points = 20;
+        self.requiredTreeLevel = 1;
+    }
+    return self;
+}
+
+
 
 @end

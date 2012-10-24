@@ -10,7 +10,6 @@
 #import "ViewController.h"
 #import "CollectionViewController.h"
 #import "FruitOnTreeImageView.h"
-#import "FruitApple.h"
 
 @interface ViewController ()
 

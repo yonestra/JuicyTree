@@ -7,6 +7,7 @@
 //
 
 #import "GameManager.h"
+#import "CollectionManager.h"
 
 @implementation GameManager
 
@@ -15,16 +16,6 @@
   GameManager* gameManager = [GameManager sharedGameManager];
  
  **/
-
-/**
-　よねちゃん実装しといてメモ
-　【果物つくって通知】
-　NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-　[notificationCenter addObserver:self selector:@selector(hogehoge:) name:@"createFruits" object:fruitsArray];
- **/
-
-
-
 
 static GameManager* sharedGameManager = nil;
 
@@ -181,6 +172,9 @@ static GameManager* sharedGameManager = nil;
     // スペース空いたことを知らせる
     NSInteger key = fruits.positionId;
     [FruitsOnTreeDictionary removeObjectForKey:[NSString stringWithFormat:@"%d", key]];
+    
+    // はじめての実なら、コレクションに追加
+    [[CollectionManager sharedCollectionManager] addFruits:fruits];
 }
 
 // 木進化判定メソッド

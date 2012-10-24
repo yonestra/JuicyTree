@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FruitApple.h"
-#import "FruitBanana.h"
+#import "Fruits.h"
+
 
 #define FRUITS_WIDTH  50
 #define FRUITS_HEIGHT 50

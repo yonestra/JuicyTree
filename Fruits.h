@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
-    APPLE_FRUIT = 0,
-    BANANA_FRUIT
+enum FRUITS {
+    APPLE = 0,
+    BANANA,
+    
 };
 
 @interface Fruits : NSObject {
@@ -29,5 +30,40 @@ enum {
 @property (nonatomic, assign) NSInteger requiredTreeLevel;
 @property (nonatomic, assign) NSInteger positionId;
 
-
 @end
+
+
+
+// 各種フルーツの宣言
+
+// くだもの
+@interface FruitApple : Fruits @end     // りんご
+@interface FruitBanana : Fruits @end    // ばなな
+@interface FruitMikan : Fruits @end     // みかん
+@interface FruitBudo : Fruits @end      // ぶどう
+@interface FruitPeach : Fruits @end     // もも
+@interface FruitPineApple : Fruits @end // パイナップル
+
+// やさい
+@interface FruitNasu : Fruits @end
+@interface FruitOnion : Fruits @end
+@interface FruitCarrot : Fruits @end
+@interface FruitKyuri : Fruits @end
+@interface FruitEndomame : Fruits @end
+@interface FruitPman : Fruits @end
+@interface FruitShimeji : Fruits @end
+@interface FruitSuika : Fruits @end
+
+// 上級たべもの
+@interface FruitCola : Fruits @end
+@interface FruitCurry : Fruits @end
+@interface FruitPotechi : Fruits @end
+
+// カオス
+@interface FruitClock : Fruits @end
+@interface FruitSoccerball: Fruits @end
+@interface FruitAkuma : Fruits @end
+@interface FruitMaruhi : Fruits @end
+@interface FruitGlasses : Fruits @end
+@interface FruitIphone : Fruits @end
+@interface FruitCrown : Fruits @end
