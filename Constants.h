@@ -32,7 +32,8 @@
 
 
 // ゲームマネージャー
-#define CREATE_FRUIT_DURATION_TIME 20   // この時間が経過したら木に身をつける
+#define CREATE_FRUIT_DURATION_TIME 2   // この時間が経過したら木に実をつける
+#define CREATE_FRUIT_MAX_COUNT  20      // 木に成る限界の実の個数
 
 // コレクションビュー
 #define COLLECTION_FRUIT_PER_PAGE 6     // 1ページあたりに表示する果物

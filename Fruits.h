@@ -35,7 +35,5 @@ enum FRUITS {
 
 @end
 
-
-@interface FruitApple : Fruits @end
-@interface FruitBanana : Fruits @end
+// ハテナブロック
 @interface FruitHatena : Fruits @end

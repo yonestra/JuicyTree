@@ -117,8 +117,8 @@
 		20FA23B9162C7B0C009110FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../GameManager.h; sourceTree = "<group>"; };
 		20FA23BA162C7B0C009110FF /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = ../GameManager.m; sourceTree = "<group>"; };
 		20FA23BC162C7C09009110FF /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		20FA23BE162C7DE3009110FF /* Fruits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruits.h; sourceTree = "<group>"; };
-		20FA23BF162C7DE3009110FF /* Fruits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fruits.m; sourceTree = "<group>"; };
+		20FA23BE162C7DE3009110FF /* Fruits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fruits.h; path = ../Fruits.h; sourceTree = "<group>"; };
+		20FA23BF162C7DE3009110FF /* Fruits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fruits.m; path = ../Fruits.m; sourceTree = "<group>"; };
 		FB611AC1162F2B6D003F0C50 /* akuma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akuma.png; sourceTree = "<group>"; };
 		FB611AC2162F2B6D003F0C50 /* akuma@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "akuma@2x.png"; sourceTree = "<group>"; };
 		FB611AC3162F2B6D003F0C50 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 		FB611B12162F2B6E003F0C50 /* tree_tmp.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tree_tmp.ai; sourceTree = "<group>"; };
 		FB611B13162F2B6E003F0C50 /* ushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ushi.png; sourceTree = "<group>"; };
 		FB611B14162F2B6E003F0C50 /* ushi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ushi@2x.png"; sourceTree = "<group>"; };
-		FB611B69162F2BD2003F0C50 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FB611B69162F2BD2003F0C50 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		FB9D4C7E162C75B0002F42D4 /* JuicyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuicyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9D4C82162C75B0002F42D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FB9D4C84162C75B0002F42D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,7 +216,7 @@
 		FB9D4C9B162C75B0002F42D4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FBED199C162DED6900F145C0 /* FruitOnTreeImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FruitOnTreeImageView.h; sourceTree = "<group>"; };
 		FBED199D162DED6900F145C0 /* FruitOnTreeImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FruitOnTreeImageView.m; sourceTree = "<group>"; };
-		FBED19A0162DED9B00F145C0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		FBED19A0162DED9B00F145C0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +245,15 @@
 			name = Manager;
 			sourceTree = "<group>";
 		};
+		2048A923163857D900EC4740 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				20FA23BE162C7DE3009110FF /* Fruits.h */,
+				20FA23BF162C7DE3009110FF /* Fruits.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		20FA23B8162C79E2009110FF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +271,7 @@
 		20FA23C4162C81BB009110FF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FB611B69162F2BD2003F0C50 /* Default.png */,
 				FB611AC1162F2B6D003F0C50 /* akuma.png */,
 				FB611AC2162F2B6D003F0C50 /* akuma@2x.png */,
 				FB611AC3162F2B6D003F0C50 /* apple.png */,
@@ -351,11 +361,6 @@
 		FB9D4C73162C75B0002F42D4 = {
 			isa = PBXGroup;
 			children = (
-				FB611B69162F2BD2003F0C50 /* Default.png */,
-				204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */,
-				FBED19A0162DED9B00F145C0 /* Constants.h */,
-				20FA23BE162C7DE3009110FF /* Fruits.h */,
-				20FA23BF162C7DE3009110FF /* Fruits.m */,
 				FB9D4C88162C75B0002F42D4 /* JuicyTree */,
 				FB9D4C81162C75B0002F42D4 /* Frameworks */,
 				FB9D4C7F162C75B0002F42D4 /* Products */,
@@ -373,6 +378,7 @@
 		FB9D4C81162C75B0002F42D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */,
 				FB9D4C82162C75B0002F42D4 /* UIKit.framework */,
 				FB9D4C84162C75B0002F42D4 /* Foundation.framework */,
 				FB9D4C86162C75B0002F42D4 /* CoreGraphics.framework */,
@@ -383,12 +389,14 @@
 		FB9D4C88162C75B0002F42D4 /* JuicyTree */ = {
 			isa = PBXGroup;
 			children = (
-				20FA23C4162C81BB009110FF /* Resource */,
-				20FA23B8162C79E2009110FF /* View */,
-				2015C32016371C90008E36F4 /* Manager */,
 				FB9D4C91162C75B0002F42D4 /* AppDelegate.h */,
 				FB9D4C92162C75B0002F42D4 /* AppDelegate.m */,
+				FBED19A0162DED9B00F145C0 /* Constants.h */,
+				2048A923163857D900EC4740 /* Model */,
+				20FA23B8162C79E2009110FF /* View */,
+				2015C32016371C90008E36F4 /* Manager */,
 				FB9D4C89162C75B0002F42D4 /* Supporting Files */,
+				20FA23C4162C81BB009110FF /* Resource */,
 			);
 			path = JuicyTree;
 			sourceTree = "<group>";

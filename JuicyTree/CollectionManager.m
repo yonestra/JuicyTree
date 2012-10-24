@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 Toraemon. All rights reserved.
 //
 
+#import "GameManager.h"
 #import "CollectionManager.h"
 
 @implementation CollectionManager
@@ -55,22 +56,7 @@ static CollectionManager* collectionManager = nil;
 - (Fruits*)getFruitByFruitIdentifier:(NSInteger)fruitIdentifier {
     NSString* fruit_id = [NSString stringWithFormat:@"%d", fruitIdentifier];
     if ([collections containsObject:fruit_id]) {
-        switch (fruitIdentifier) {
-            case 0:
-                return [[FruitApple alloc] init];
-            case 1:
-                return [[FruitBanana alloc] init];
-            case 2:
-                return [[FruitApple alloc] init];
-            case 3:
-                return [[FruitBanana alloc] init];
-            case 4:
-                return [[FruitApple alloc] init];
-            case 5:
-                return [[FruitBanana alloc] init];
-            default:
-                return [[FruitBanana alloc] init];
-        }
+        return [[GameManager sharedGameManager] objectAtFruitId:fruitIdentifier];
     }
     else {
         return [[FruitHatena alloc] init];

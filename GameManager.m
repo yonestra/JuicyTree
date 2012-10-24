@@ -32,6 +32,9 @@ static GameManager* sharedGameManager = nil;
         treeLevel = 1;
         time = 0;
         
+        // 果物リストを作る
+        [self createFruitList];
+        
         // 時間の計測を開始する
         [self startTimer];
     }
@@ -50,12 +53,12 @@ static GameManager* sharedGameManager = nil;
     NSString* path = [bundle pathForResource:@"fruits" ofType:@"plist"];
     NSArray* fruitListFromPlist = [NSArray arrayWithContentsOfFile:path];
     
-    fruitList = [NSMutableArray array];
+    fruitList = [[NSMutableArray alloc] init];
     for (NSDictionary* fruitElem in fruitListFromPlist) {
-        Fruits* fruits = [[Fruits alloc] initWithId:[fruitElem objectForKey:@"id"]
+        Fruits* fruits = [[Fruits alloc] initWithId:[[fruitElem objectForKey:@"id"] intValue]
                                                name:[fruitElem objectForKey:@"name"]
                                           imageName:[fruitElem objectForKey:@"imageName"]
-                                             points:[fruitElem objectForKey:@"points"]
+                                             points:[[fruitElem objectForKey:@"points"] intValue]
                           ];
         [fruitList addObject:fruits];
     }
@@ -101,13 +104,13 @@ static GameManager* sharedGameManager = nil;
     NSArray* positionIds = [FruitsOnTreeDictionary allKeys];
     
     // 空いてる場所がない！
-    if ([positionIds count] == 20) {
+    if ([positionIds count] == CREATE_FRUIT_MAX_COUNT) {
         return -1;
     }
     
     int brunkPos;
     while (1) {
-        brunkPos = arc4random() % 20;
+        brunkPos = arc4random() % CREATE_FRUIT_MAX_COUNT;
         if ( ![positionIds containsObject:[NSString stringWithFormat:@"%d", brunkPos]] ) {
             break;
         }
@@ -120,18 +123,9 @@ static GameManager* sharedGameManager = nil;
     Fruits* fruit;
     
     // TODO: ツリーレベルを考慮した実の生成
-    int r = arc4random() % 2;
+    int r = arc4random() % 23;
+    fruit = [self objectAtFruitId:r];
     
-    switch (r) {
-        case 0:
-            fruit = [[[FruitApple alloc] init] autorelease];
-            break;
-        case 1:
-            fruit = [[[FruitBanana alloc] init] autorelease];
-            break;
-        default:
-            break;
-    }
     return fruit;
 }
 
@@ -236,5 +230,21 @@ static GameManager* sharedGameManager = nil;
     return CGRectMake(x, y, w, h);
     
 }
+
+
+- (Fruits*)objectAtFruitId:(NSInteger)fruitId {
+    Fruits* fruit;
+    
+    for (int i=0; i<[fruitList count]; i++) {
+        fruit = [fruitList objectAtIndex:i];
+        if (fruit.identifier == fruitId) {
+            [fruit retain];
+            LOG(@"return_fruits = %@", fruit);
+            return fruit;
+        }
+    }
+    return NULL;
+}
+
 
 @end

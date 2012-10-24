@@ -36,37 +36,6 @@
 @end
 
 
-/** りんご **/
-@implementation FruitApple
-
-- (FruitApple*)init {
-    if (self = [super init]) {
-        self.identifier = APPLE;
-        self.name = @"りんご";
-        self.imageName = @"apple.png";
-        self.points = 10;
-    }
-    return self;
-}
-
-@end
-
-/** バナナ **/
-@implementation FruitBanana
-
-- (FruitBanana*)init {
-    if (self = [super init]) {
-        self.identifier = BANANA;
-        self.name = @"バナナ";
-        self.imageName = @"banana.png";
-        self.points = 20;
-    }
-    return self;
-}
-
-@end
-
-
 /** ハテナ **/
 @implementation FruitHatena
 
