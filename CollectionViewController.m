@@ -32,7 +32,7 @@
 // interface builderを使わない場合はこのメソッドが必要
 - (void)loadView{
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_page.png"]];
     [self.view release];
     
     // *** ページャー ***
