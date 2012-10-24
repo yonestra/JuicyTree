@@ -14,6 +14,7 @@
 
 static CollectionManager* collectionManager = nil;
 
+// シングルトン。CollectionManagerオブジェクトを返す
 + (CollectionManager*)sharedCollectionManager {
     if (collectionManager == nil) {
         collectionManager = [[self alloc] init];
@@ -21,8 +22,10 @@ static CollectionManager* collectionManager = nil;
     return collectionManager;
 }
 
+// 初期化
 - (CollectionManager*)init {
     if (self = [super init]) {
+        // FIXME: リーク?
         collections = [[NSMutableArray alloc] init];
     }
     return self;
@@ -33,16 +36,46 @@ static CollectionManager* collectionManager = nil;
     [super dealloc];
 }
 
-- (BOOL)addFruits:(Fruits*)fruit {
+// 果実をコレクションに追加する
+- (BOOL)appendFruitsToCollection:(Fruits*)fruit {
     NSString* fruit_id = [NSString stringWithFormat:@"%d", fruit.identifier];
     if ([collections containsObject:fruit_id]) {
+        // 既にコレクションされてる
         return NO;
     }
     else {
+        // 初めての実。コレクションに追加する
         [collections addObject:fruit_id];
-        LOG(@"collections = %@", collections);
         return YES;
     }
 }
+
+// fruitIdをもとにFruitsオブジェクトを返す
+// 修正を加えていく予定
+- (Fruits*)getFruitByFruitIdentifier:(NSInteger)fruitIdentifier {
+    NSString* fruit_id = [NSString stringWithFormat:@"%d", fruitIdentifier];
+    if ([collections containsObject:fruit_id]) {
+        switch (fruitIdentifier) {
+            case 0:
+                return [[FruitApple alloc] init];
+            case 1:
+                return [[FruitBanana alloc] init];
+            case 2:
+                return [[FruitApple alloc] init];
+            case 3:
+                return [[FruitBanana alloc] init];
+            case 4:
+                return [[FruitApple alloc] init];
+            case 5:
+                return [[FruitBanana alloc] init];
+            default:
+                return [[FruitBanana alloc] init];
+        }
+    }
+    else {
+        return [[FruitHatena alloc] init];
+    }
+}
+
 
 @end

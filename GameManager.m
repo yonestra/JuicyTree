@@ -11,14 +11,11 @@
 
 @implementation GameManager
 
-/**
-  つかいかたメモ
-  GameManager* gameManager = [GameManager sharedGameManager];
- 
- **/
+@synthesize fruitList;
 
 static GameManager* sharedGameManager = nil;
 
+// シングルトン。GameManagerオブジェクトを返す
 + (GameManager*)sharedGameManager {
     if (sharedGameManager == nil) {
         sharedGameManager = [[self alloc] init];
@@ -26,26 +23,49 @@ static GameManager* sharedGameManager = nil;
     return sharedGameManager;
 }
 
+// 初期化
 - (GameManager*)init {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         // TODO: NSUserDefaultから読み込む
         FruitsOnTreeDictionary = [[NSMutableDictionary alloc] init];
         totalPoint = 0;
-        time = 0;
         treeLevel = 1;
+        time = 0;
+        
+        // 時間の計測を開始する
         [self startTimer];
     }
     return self;
 }
 
 - (void)dealloc {
+    [fruitList release], fruitList = nil;
     [sharedGameManager release];
+    [super dealloc];
 }
+
+// リソースファイルfruits.plistから果物オブジェクトを作り、配列に格納する
+- (void)createFruitList {
+    NSBundle* bundle = [NSBundle mainBundle];
+    NSString* path = [bundle pathForResource:@"fruits" ofType:@"plist"];
+    NSArray* fruitListFromPlist = [NSArray arrayWithContentsOfFile:path];
+    
+    fruitList = [NSMutableArray array];
+    for (NSDictionary* fruitElem in fruitListFromPlist) {
+        Fruits* fruits = [[Fruits alloc] initWithId:[fruitElem objectForKey:@"id"]
+                                               name:[fruitElem objectForKey:@"name"]
+                                          imageName:[fruitElem objectForKey:@"imageName"]
+                                             points:[fruitElem objectForKey:@"points"]
+                          ];
+        [fruitList addObject:fruits];
+    }
+}
+
 
 // 時間の計測を開始
 - (void)startTimer {
     NSTimer *timer;
+    // 1秒ごとにcheckStatusByOneMinutesメソッドを呼出
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                              target:self
                                            selector:@selector(checkStatusByOneMinutes:)
@@ -54,93 +74,26 @@ static GameManager* sharedGameManager = nil;
 
 }
 
-// 1秒ごとに状態をチェック
+// 木の状態をチェックする。時間が来たら実をならす
 - (void)checkStatusByOneMinutes:(NSTimer*)timer
 {
-    // 時間カウント
     time++;
-    LOG(@"time = %d", time);
     
     // 2分ごとに実を作る
-//    if (time%120 == 0) {
-    if (time%2 == 0) {
+    if (time%CREATE_FRUIT_DURATION_TIME == 0) {
+        // 1つだけ実を作る
         [self createFruitsArray:1];
-        // TODO: ViewController側にPUSHする処理
     }
 }
 
-// アプリ起動時に状態をチェック
+// アプリ起動時にのみ呼ばれる。durationを参考に、実をならす
 - (void)checkStatusByLaunchApplication:(NSInteger)duration {
-    LOG_CURRENT_METHOD;
-    LOG(@"duration = %d", duration);
-    int numOfFruits = duration/2;
-    if (numOfFruits >=20) {
-        numOfFruits = 20;
+    int numOfFruits = duration/10;
+    // 最大個数を超えた時用に調整
+    if (numOfFruits >= CREATE_FRUIT_DURATION_TIME) {
+        numOfFruits = CREATE_FRUIT_DURATION_TIME;
     }
     [self createFruitsArray:numOfFruits];
-}
-
-
-
-// 実らせる果実を決める
-// TODO: ツリーレベルを考慮
-- (Fruits*)selectFruits {
-    LOG_CURRENT_METHOD;
-    Fruits* fruit;
-    int r = arc4random() % 2;
-    switch (r) {
-        case 0:
-            fruit = [[[FruitApple alloc] init] autorelease];
-            break;
-        case 1:
-            fruit = [[[FruitBanana alloc] init] autorelease];
-            break;
-        default:
-            break;
-    }
-    return fruit;
-}
-
-// 実を作る
-- (Fruits*)createFruits {
-    LOG_CURRENT_METHOD;
-    // 場所決める
-    NSInteger position = [self getBrunkPosition];
-    
-    if (position == -1) {
-        // 場所空いてないよ！
-        return nil;
-    }
-    else {
-        // 果実作って返す
-        Fruits* fruit = [self selectFruits];
-        fruit.positionId = position;
-        [FruitsOnTreeDictionary setObject:fruit forKey:[NSString stringWithFormat:@"%d", position]];
-        return fruit;
-    }
-}
-
-// 実を複数作る
-- (void)createFruitsArray:(NSInteger)count {
-    LOG_CURRENT_METHOD;
-    NSMutableArray* fruitsArray = [NSMutableArray array];
-    
-    Fruits* fruit;
-    for (int i=0; i<count; i++) {
-        if ( (fruit = [self createFruits]) != nil) {
-            [fruitsArray addObject:fruit];
-        } else {
-            break;
-        }
-    }
-    [self notificateMainView:fruitsArray];
-}
-
-// メイン画面に「実を作って！」とお願いする
-// お願いの際には、実の情報Arrayを渡す
-- (void)notificateMainView:(NSArray*)fruitsArray {
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter postNotificationName:@"createFruits" object:self userInfo:fruitsArray];
 }
 
 // 木の空いてる場所を返す
@@ -162,19 +115,84 @@ static GameManager* sharedGameManager = nil;
     return brunkPos;
 }
 
+// 実らせる果実を決める
+- (Fruits*)selectFruits {
+    Fruits* fruit;
+    
+    // TODO: ツリーレベルを考慮した実の生成
+    int r = arc4random() % 2;
+    
+    switch (r) {
+        case 0:
+            fruit = [[[FruitApple alloc] init] autorelease];
+            break;
+        case 1:
+            fruit = [[[FruitBanana alloc] init] autorelease];
+            break;
+        default:
+            break;
+    }
+    return fruit;
+}
+
+// 実を1つだけ作る
+- (Fruits*)createFruits {
+    // 空いてる場所を教えてもらう
+    NSInteger position = [self getBrunkPosition];
+    
+    // 場所が空いてない場合は諦める
+    if (position == -1) {
+        return nil;
+    }
+    else {
+        // 果実作って返す
+        Fruits* fruit = [self selectFruits];
+        fruit.positionId = position;
+        // posId->Fruit で場所を登録
+        [FruitsOnTreeDictionary setObject:fruit
+                                   forKey:[NSString stringWithFormat:@"%d", position]];  
+        return fruit;
+    }
+}
+
+// 実をcount個数分だけ作る
+- (void)createFruitsArray:(NSInteger)count {
+    NSMutableArray* fruitsArray = [NSMutableArray array];
+    
+    Fruits* fruit;
+    for (int i=0; i<count; i++) {
+        if ( (fruit = [self createFruits]) != nil) {
+            [fruitsArray addObject:fruit];
+        } else {
+            break;
+        }
+    }
+    // 実を作って！とメイン画面にお願いする（Notificationを利用）
+    [self notificateMainView:fruitsArray];
+}
+
+// メイン画面に「実を作って！」とお願いする
+// お願いの際には、NSArray<Fruits>を渡す
+- (void)notificateMainView:(NSArray*)fruitsArray {
+    NSDictionary* param = [NSDictionary dictionaryWithObject:fruitsArray forKey:@"fruitsArray"];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:@"createFruits" object:self userInfo:param];
+}
+
 // 果実収穫メソッド
 - (void)cropFruits:(Fruits*)fruits {
-    // ポイントを加算
+    // ポイント加算
     totalPoint += fruits.points;
-    //[self judgeLevelUpTree];
-    LOG(@"とくてん: %d", totalPoint);
     
-    // スペース空いたことを知らせる
+    // 木のレベルアップが必要かをチェック
+    [self judgeLevelUpTree:totalPoint];
+    
+    // 実のなるスペースを空ける
     NSInteger key = fruits.positionId;
     [FruitsOnTreeDictionary removeObjectForKey:[NSString stringWithFormat:@"%d", key]];
     
     // はじめての実なら、コレクションに追加
-    [[CollectionManager sharedCollectionManager] addFruits:fruits];
+    [[CollectionManager sharedCollectionManager] appendFruitsToCollection:fruits];
 }
 
 // 木進化判定メソッド
@@ -187,11 +205,9 @@ static GameManager* sharedGameManager = nil;
 
 // 木進化メソッド
 - (void)levelUpTree {
-    LOG_CURRENT_METHOD;
     treeLevel++;
     
-    // ポイントの処理
-    // ViewControllerにお知らせ
+    // TODO: ViewControllerに通知
 }
 
 

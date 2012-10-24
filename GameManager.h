@@ -14,13 +14,18 @@
 #define FRUITS_HEIGHT 50
 
 @interface GameManager : NSObject {
-    NSMutableDictionary* FruitsOnTreeDictionary; // posId -> fruit
-    NSInteger totalPoint;
-    NSInteger time;
-    NSInteger treeLevel;
+    NSMutableArray* fruitList;                   // このゲームで扱う全ての果物リスト
+    NSMutableDictionary* FruitsOnTreeDictionary; // 現在木になっている果物の情報リスト（posId -> fruit）
+    NSInteger totalPoint;                        // ユーザが保持しているポイント
+    NSInteger treeLevel;                         // ユーザの現在の木レベル
+    
+    NSInteger time;                              // タイマー用
 }
 
+@property (nonatomic, retain) NSArray* fruitList;
+
 + (GameManager*)sharedGameManager;
+- (void)createFruitList;
 - (void)checkStatusByLaunchApplication:(NSInteger)duration;
 - (void)cropFruits:(Fruits*)fruits;
 - (void)judgeLevelUpTree:(NSInteger)point;

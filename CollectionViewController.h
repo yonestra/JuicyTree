@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CollectionViewController : UIViewController {
-    NSInteger page; // ページ番号
-    UILabel* pageLabel; // ページラベル
+    NSInteger page;         // ページ番号
+    UILabel* pageLabel;     // 現在のページを示すラベル 
+    UIView* fruitSetView;   // 果物6つ表示するビュー
 }
 
 @end

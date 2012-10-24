@@ -11,7 +11,7 @@
 enum FRUITS {
     APPLE = 0,
     BANANA,
-    
+    HATENA = 999
 };
 
 @interface Fruits : NSObject {
@@ -19,7 +19,6 @@ enum FRUITS {
     NSString* name;
     NSString* imageName;
     NSInteger points;
-    NSInteger requiredTreeLevel;
     NSInteger positionId;
 }
 
@@ -27,43 +26,16 @@ enum FRUITS {
 @property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain) NSString* imageName;
 @property (nonatomic, assign) NSInteger points;
-@property (nonatomic, assign) NSInteger requiredTreeLevel;
 @property (nonatomic, assign) NSInteger positionId;
+
+- (Fruits*)initWithId:(NSInteger)_identifier
+                 name:(NSString*)_name
+            imageName:(NSString*)_imageName
+               points:(NSInteger)_points;
 
 @end
 
 
-
-// 各種フルーツの宣言
-
-// くだもの
-@interface FruitApple : Fruits @end     // りんご
-@interface FruitBanana : Fruits @end    // ばなな
-@interface FruitMikan : Fruits @end     // みかん
-@interface FruitBudo : Fruits @end      // ぶどう
-@interface FruitPeach : Fruits @end     // もも
-@interface FruitPineApple : Fruits @end // パイナップル
-
-// やさい
-@interface FruitNasu : Fruits @end
-@interface FruitOnion : Fruits @end
-@interface FruitCarrot : Fruits @end
-@interface FruitKyuri : Fruits @end
-@interface FruitEndomame : Fruits @end
-@interface FruitPman : Fruits @end
-@interface FruitShimeji : Fruits @end
-@interface FruitSuika : Fruits @end
-
-// 上級たべもの
-@interface FruitCola : Fruits @end
-@interface FruitCurry : Fruits @end
-@interface FruitPotechi : Fruits @end
-
-// カオス
-@interface FruitClock : Fruits @end
-@interface FruitSoccerball: Fruits @end
-@interface FruitAkuma : Fruits @end
-@interface FruitMaruhi : Fruits @end
-@interface FruitGlasses : Fruits @end
-@interface FruitIphone : Fruits @end
-@interface FruitCrown : Fruits @end
+@interface FruitApple : Fruits @end
+@interface FruitBanana : Fruits @end
+@interface FruitHatena : Fruits @end

@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSMutableArray* collections;
 
 + (CollectionManager*)sharedCollectionManager;
-- (BOOL)addFruits:(Fruits*)fruit;
+- (BOOL)appendFruitsToCollection:(Fruits*)fruit;
+- (Fruits*)getFruitByFruitIdentifier:(NSInteger)fruitIdentifier;
 
 @end

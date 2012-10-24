@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "CollectionViewController.h"
+#import "CollectionManager.h"
 
 @interface CollectionViewController ()
 
@@ -15,14 +16,6 @@
 
 @implementation CollectionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -42,82 +35,50 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view release];
     
-    // ページャー
+    // *** ページャー ***
     UIView* pager = [[[UIView alloc] initWithFrame:CGRectMake(0, 300, 320, 30)] autorelease];
     
+    // 前へ戻るボタン。「←」で表現
     UIButton* prevButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     prevButton.frame = CGRectMake(80, 0, 30, 30);
     [prevButton setTitle:@"←" forState:UIControlStateNormal];
+    prevButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [prevButton addTarget:self action:@selector(pushPrevButton) forControlEvents:UIControlEventTouchUpInside];
     [pager addSubview:prevButton];
     
+    // 現在のページ番号を示すラベル
     pageLabel = [[[UILabel alloc] initWithFrame:CGRectMake(130, 0, 60, 30)] autorelease];
-    pageLabel.text = [NSString stringWithFormat:@"%d/16", page+1];
     pageLabel.textAlignment = NSTextAlignmentCenter;
     [pager addSubview:pageLabel];
     
+    // 次へ進むボタン。「→」で表現
     UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     nextButton.frame = CGRectMake(210, 0, 30, 30);
     [nextButton setTitle:@"→" forState:UIControlStateNormal];
+    nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [nextButton addTarget:self action:@selector(pushNextButton) forControlEvents:UIControlEventTouchUpInside];
     [pager addSubview:nextButton];
     
     [self.view addSubview:pager];
     
-    // 戻るボタン
+    // *** 戻るボタン ***
     UIButton* backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     backButton.frame = CGRectMake(50, 350, 220, 50);
     [backButton setTitle:@"もどる" forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(pushBackButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
-    // 広告ビュー
+    // *** 広告ビュー（仮） ***
     UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, 410, 320, 50)] autorelease];
     adView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:adView];
     
-    // コレクションImageView
-    int i=0, j=0;
-    UIImage* image = [UIImage imageNamed:@"apple.jpeg"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(50+(50+35)*i, 100+(50+35)*j, 50, 50);
-    [self.view addSubview:imageView];
-    
-    i++;
-    image = [UIImage imageNamed:@"banana.jpeg"];
-    imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(50+(50+35)*i, 100+(50+35)*j, 50, 50);
-    [self.view addSubview:imageView];
-    
-    i++;
-    image = [UIImage imageNamed:@"apple.jpeg"];
-    imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(50+(50+35)*i, 100+(50+35)*j, 50, 50);
-    [self.view addSubview:imageView];
-    
-    j++;
-    i=0;
-    image = [UIImage imageNamed:@"apple.jpeg"];
-    imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(50+(50+35)*i, 150+(50+35)*j, 50, 50);
-    [self.view addSubview:imageView];
-    
-    i++;
-    image = [UIImage imageNamed:@"apple.jpeg"];
-    imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(50+(50+35)*i, 150+(50+35)*j, 50, 50);
-    [self.view addSubview:imageView];
-    
-    i++;
-    image = [UIImage imageNamed:@"apple.jpeg"];
-    imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(50+(50+35)*i, 150+(50+35)*j, 50, 50);
-    [self.view addSubview:imageView];    
+    // *** コレクション表示ビュー ***
+    [self reload];
 }
 
+// もどるボタンが押された。メイン画面に戻る
 - (void)pushBackButton {
-    LOG_CURRENT_METHOD;
-    
     CATransition *animation = [CATransition animation];
     [animation setType:kCATransitionFade];
     [animation setDuration:0.3];
@@ -128,6 +89,7 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+// ページャの「←」が押された。一つ前のページへ戻る
 - (void)pushPrevButton {
     if (page > 0) {
         page--;
@@ -135,6 +97,7 @@
     [self reload];
 }
 
+// ページャの「→」が押された。一つ先のページへ進む
 - (void)pushNextButton {
     if (page < 15) {
         page++;
@@ -142,8 +105,33 @@
     [self reload];
 }
 
+// コレクションビューを再描画する
 -(void)reload {
+    // 現在のページ番号をセット
     pageLabel.text = [NSString stringWithFormat:@"%d/16", page+1];
+    
+    if (fruitSetView != nil) {
+        [fruitSetView removeFromSuperview];
+        [fruitSetView release], fruitSetView=nil;
+    }
+    
+    fruitSetView = [[UIView alloc] initWithFrame:CGRectMake(50, 100, 320, 135)];
+    int start = page * COLLECTION_FRUIT_PER_PAGE;
+    int col=0, row=0;
+    for (int i=start; i<start+COLLECTION_FRUIT_PER_PAGE; i++) {
+        // 縦横の位置を取得
+        col = (i-start) % 3;
+        row = (i-start) / 3;
+        
+        // 場所情報に相応しい果物を表示
+        Fruits* fruit = [[CollectionManager sharedCollectionManager] getFruitByFruitIdentifier:i];
+        UIImage* image = [UIImage imageNamed:fruit.imageName];
+        UIImageView* imageView = [[[UIImageView alloc] initWithImage:image] autorelease];
+        imageView.frame = CGRectMake((50+35)*col, (50+35)*row, 50, 50);
+        [fruitSetView addSubview:imageView];
+        [self.view addSubview:fruitSetView];
+        [fruit release];
+    }
 }
 
 @end

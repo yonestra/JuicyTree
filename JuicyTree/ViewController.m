@@ -56,7 +56,7 @@
 - (void)getFruits:(NSNotificationCenter*)center
 {
     
-    NSArray *fruits = [center userInfo];
+    NSArray *fruits = [[center userInfo] objectForKey:@"fruitsArray"];
     for (Fruits *fruit in fruits) {
         FruitOnTreeImageView *fruitImageView = [[[FruitOnTreeImageView alloc] init] autorelease];
         fruitImageView.frame = [GameManager positionId2Rect:fruit.positionId];

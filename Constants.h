@@ -30,6 +30,14 @@
 #define SHAKE_ROTATE 0.4f
 #define SHAKE_DURATION 0.1f
 
+
+// ゲームマネージャー
+#define CREATE_FRUIT_DURATION_TIME 20   // この時間が経過したら木に身をつける
+
+// コレクションビュー
+#define COLLECTION_FRUIT_PER_PAGE 6     // 1ページあたりに表示する果物
+
+
 //#define POS_1 CGRectMake(10, 10, 80, 80)
 //#define POS_2 CGRectMake(10, 120, 80, 80)
 //#define POS_3 CGRectMake(10, 230, 80, 80)
