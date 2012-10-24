@@ -15,4 +15,6 @@
 
 @property (retain, nonatomic) Fruits *fruit;
 
+- (void) bornAmination;
+
 @end
