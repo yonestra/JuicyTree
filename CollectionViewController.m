@@ -32,7 +32,7 @@
 // interface builderを使わない場合はこのメソッドが必要
 - (void)loadView{
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_page.png"]];
     [self.view release];
     
     // *** ページャー ***
@@ -62,14 +62,14 @@
     [self.view addSubview:pager];
     
     // *** 戻るボタン ***
-    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    backButton.frame = CGRectMake(50, 350, 220, 50);
-    [backButton setTitle:@"もどる" forState:UIControlStateNormal];
+    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(5, 10, 67, 40);
+    backButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_arrow.png"]];
     [backButton addTarget:self action:@selector(pushBackButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
     // *** 広告ビュー（仮） ***
-    UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, 410, 320, 50)] autorelease];
+    UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, 430, 320, 50)] autorelease];
     adView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:adView];
     

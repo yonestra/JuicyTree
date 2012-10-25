@@ -179,7 +179,7 @@ static GameManager* sharedGameManager = nil;
 // メイン画面に「木レベルあがったよ！」とお知らせする
 // お知らせの際には、レベルアップ後の木レベルを渡す
 - (void)notificateMainViewLevelUpTree:(NSInteger)treeLevel {
-    NSDictionary* param = [NSDictionary dictionaryWithObject:treeLevel forKey:@"treeLevel"];
+    NSDictionary* param = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:treeLevel] forKey:@"treeLevel"];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter postNotificationName:NOTIFICATION_LELEL_UP_TREE object:self userInfo:param];
 }
@@ -203,10 +203,37 @@ static GameManager* sharedGameManager = nil;
 
 // 木進化判定メソッド
 - (void)judgeLevelUpTree:(NSInteger)point {
+    LOG(@"treeLevel = %d, point = %d", treeLevel, point);
     // あるポイントを超えたら木を進化させる
-    if (point > TREE_LEVEL_UP_LINE_LV_1) {
+    if (treeLevel == 1 && point > TREE_LEVEL_UP_LINE_LV_1) {
         [self levelUpTree];
     }
+    if (treeLevel == 2 && point > TREE_LEVEL_UP_LINE_LV_2) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 3 && point > TREE_LEVEL_UP_LINE_LV_3) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 4 && point > TREE_LEVEL_UP_LINE_LV_4) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 5 && point > TREE_LEVEL_UP_LINE_LV_5) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 6 && point > TREE_LEVEL_UP_LINE_LV_6) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 7 && point > TREE_LEVEL_UP_LINE_LV_7) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 8 && point > TREE_LEVEL_UP_LINE_LV_8) {
+        [self levelUpTree];
+    }
+    if (treeLevel == 9 && point > TREE_LEVEL_UP_LINE_LV_9) {
+        [self levelUpTree];
+    }
+
+
 }
 
 // 木進化メソッド

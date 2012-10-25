@@ -22,10 +22,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tree_lv4.png"]];
+    backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tree_lv1.png"]];
     backgroundImageView.frame = self.view.frame;
     [self.view addSubview:backgroundImageView];
-    [backgroundImageView release];
     
     // コレクションビューを表示するボタン
     UIButton* goCollectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -40,7 +39,7 @@
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(getFruits:) name:NOTIFICATION_CREATE_FRUIT object:nil];
-    [notificationCenter addObserver:self selector:@selector(lebvelUpTree:) name:NOTIFICATION_CREATE_FRUIT object:nil];
+    [notificationCenter addObserver:self selector:@selector(levelUpTree:) name:NOTIFICATION_LELEL_UP_TREE object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +50,7 @@
 
 - (void)dealloc
 {
+    [backgroundImageView release], backgroundImageView = nil;
     [super dealloc];
 }
 
@@ -71,10 +71,33 @@
         [self.view addSubview:fruitImageView];
         [fruitImageView bornAmination];
     }
-    
 }
 
+// 木がレベルアップ!
 - (void)levelUpTree:(NSNotificationCenter*)center {
+    LOG_CURRENT_METHOD;
+    NSNumber* treeLevelNum = [[center userInfo] objectForKey:@"treeLevel"];
+    NSInteger treeLevel = [treeLevelNum intValue];
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
+                                                    message:@"木レベルがあがりました！おめでとう！"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
+    [alert release];
+    
+    if (backgroundImageView != nil) {
+        [backgroundImageView removeFromSuperview];
+        [backgroundImageView release], backgroundImageView = nil;
+    }
+    
+    // 適した壁紙をセット
+    NSString* fileName = [NSString stringWithFormat:@"tree_lv%d.png", treeLevel];
+    backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:fileName]];
+    backgroundImageView.frame = self.view.frame;
+    [self.view insertSubview:backgroundImageView atIndex:0];
+    [backgroundImageView release];
     
 }
 

@@ -11,6 +11,7 @@
 
 @interface ViewController : UIViewController {
     GameManager* gameManager;
+    UIImageView *backgroundImageView;
 }
 
 @end
