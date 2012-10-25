@@ -69,7 +69,7 @@
     [self.view addSubview:backButton];
     
     // *** 広告ビュー（仮） ***
-    UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, 410, 320, 50)] autorelease];
+    UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, 430, 320, 50)] autorelease];
     adView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:adView];
     
