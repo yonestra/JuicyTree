@@ -228,9 +228,9 @@
 		<key>name</key>
 		<string>iPhone</string>
 		<key>imageName</key>
-		<string>iphone.png</string>
+		<string>ipone.png</string>
 		<key>points</key>
-		<integer>2000</integer>
+		<real>2</real>
 	</dict>
 	<dict>
 		<key>id</key>

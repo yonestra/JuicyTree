@@ -39,7 +39,8 @@
     gameManager = [GameManager sharedGameManager];
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(getFruits:) name:@"createFruits" object:nil];
+    [notificationCenter addObserver:self selector:@selector(getFruits:) name:NOTIFICATION_CREATE_FRUIT object:nil];
+    [notificationCenter addObserver:self selector:@selector(lebvelUpTree:) name:NOTIFICATION_CREATE_FRUIT object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +74,11 @@
     
 }
 
+- (void)levelUpTree:(NSNotificationCenter*)center {
+    
+}
+
+
 - (void)handlePanGesture:(id)sender {
     UIPanGestureRecognizer *pan = (UIPanGestureRecognizer*)sender;
     UIImageView *imageView = (UIImageView *)pan.view;
@@ -99,6 +105,11 @@
     [[self.navigationController.view layer] addAnimation:animation forKey:nil];
     [self.navigationController pushViewController:collectionVC animated:NO];
     [collectionVC release];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint point = [[touches anyObject] locationInView:self.view];
+    LOG(@"touch (x,y) = %f, %f", point.x, point.y);
 }
 
 @end

@@ -35,8 +35,25 @@
 #define CREATE_FRUIT_DURATION_TIME 2   // この時間が経過したら木に実をつける
 #define CREATE_FRUIT_MAX_COUNT  20      // 木に成る限界の実の個数
 
+// 木のレベルアップ表
+#define TREE_LEVEL_UP_LINE_LV_1 20
+#define TREE_LEVEL_UP_LINE_LV_2 300
+#define TREE_LEVEL_UP_LINE_LV_3 1000
+#define TREE_LEVEL_UP_LINE_LV_4 2000
+#define TREE_LEVEL_UP_LINE_LV_5 5000
+#define TREE_LEVEL_UP_LINE_LV_6 10000
+#define TREE_LEVEL_UP_LINE_LV_7 20000
+#define TREE_LEVEL_UP_LINE_LV_8 50000
+#define TREE_LEVEL_UP_LINE_LV_9 100000
+
 // コレクションビュー
 #define COLLECTION_FRUIT_PER_PAGE 6     // 1ページあたりに表示する果物
+
+// 通知（NotificationCenter）の種類
+#define NOTIFICATION_CREATE_FRUIT @"notificationCreateFruit"
+#define NOTIFICATION_LELEL_UP_TREE @"notificationLevelUpTree"
+
+
 
 
 //#define POS_1 CGRectMake(10, 10, 80, 80)

@@ -123,7 +123,7 @@ static GameManager* sharedGameManager = nil;
     Fruits* fruit;
     
     // TODO: ツリーレベルを考慮した実の生成
-    int r = arc4random() % 23;
+    int r = arc4random() % 25;
     fruit = [self objectAtFruitId:r];
     
     return fruit;
@@ -141,6 +141,9 @@ static GameManager* sharedGameManager = nil;
     else {
         // 果実作って返す
         Fruits* fruit = [self selectFruits];
+        if (fruit == NULL) {
+            return nil;
+        }
         fruit.positionId = position;
         // posId->Fruit で場所を登録
         [FruitsOnTreeDictionary setObject:fruit
@@ -162,21 +165,30 @@ static GameManager* sharedGameManager = nil;
         }
     }
     // 実を作って！とメイン画面にお願いする（Notificationを利用）
-    [self notificateMainView:fruitsArray];
+    [self notificateMainViewCreateFruits:fruitsArray];
 }
 
 // メイン画面に「実を作って！」とお願いする
 // お願いの際には、NSArray<Fruits>を渡す
-- (void)notificateMainView:(NSArray*)fruitsArray {
+- (void)notificateMainViewCreateFruits:(NSArray*)fruitsArray {
     NSDictionary* param = [NSDictionary dictionaryWithObject:fruitsArray forKey:@"fruitsArray"];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter postNotificationName:@"createFruits" object:self userInfo:param];
+    [notificationCenter postNotificationName:NOTIFICATION_CREATE_FRUIT object:self userInfo:param];
+}
+
+// メイン画面に「木レベルあがったよ！」とお知らせする
+// お知らせの際には、レベルアップ後の木レベルを渡す
+- (void)notificateMainViewLevelUpTree:(NSInteger)treeLevel {
+    NSDictionary* param = [NSDictionary dictionaryWithObject:treeLevel forKey:@"treeLevel"];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_LELEL_UP_TREE object:self userInfo:param];
 }
 
 // 果実収穫メソッド
 - (void)cropFruits:(Fruits*)fruits {
     // ポイント加算
     totalPoint += fruits.points;
+    LOG(@"point up! current = %d", totalPoint);
     
     // 木のレベルアップが必要かをチェック
     [self judgeLevelUpTree:totalPoint];
@@ -192,7 +204,7 @@ static GameManager* sharedGameManager = nil;
 // 木進化判定メソッド
 - (void)judgeLevelUpTree:(NSInteger)point {
     // あるポイントを超えたら木を進化させる
-    if (point > 200) {
+    if (point > TREE_LEVEL_UP_LINE_LV_1) {
         [self levelUpTree];
     }
 }
@@ -202,6 +214,7 @@ static GameManager* sharedGameManager = nil;
     treeLevel++;
     
     // TODO: ViewControllerに通知
+    [self notificateMainViewLevelUpTree:treeLevel];
 }
 
 
@@ -221,6 +234,54 @@ static GameManager* sharedGameManager = nil;
 //            return CGRectMake((positionId+1)*20+10, (positionId+1)*20+10, w, h);
 //    }
     
+    LOG(@"positionId = %d", positionId);
+    CGRect frame;
+    switch (positionId) {
+        case 0:
+            frame = CGRectMake(46, 113, w, h); break;
+        case 1:
+            frame = CGRectMake(90, 156, w, h); break;
+        case 2:
+            frame = CGRectMake(143, 265, w, h); break;
+        case 3:
+            frame = CGRectMake(178, 163, w, h); break;
+        case 4:
+            frame = CGRectMake(194, 45, w, h); break;
+        case 5:
+            frame = CGRectMake(354, 138, w, h); break;
+        case 6:
+            frame = CGRectMake(272, 261, w, h); break;
+        case 7:
+            frame = CGRectMake(265, 319, w, h); break;
+        case 8:
+            frame = CGRectMake(260, 383, w, h); break;
+        case 9:
+            frame = CGRectMake(131, 99, w, h); break;
+        case 10:
+            frame = CGRectMake(86, 350, w, h); break;
+        case 11:
+            frame = CGRectMake(131, 320, w, h); break;
+        case 12:
+            frame = CGRectMake(64, 294, w, h); break;
+        case 13:
+            frame = CGRectMake(111, 257, w, h); break;
+        case 14:
+            frame = CGRectMake(40, 196, w, h); break;
+        case 15:
+            frame = CGRectMake(18, 268, w, h); break;
+        case 16:
+            frame = CGRectMake(134, 9, w, h); break;
+        case 17:
+            frame = CGRectMake(267, 133, w, h); break;
+        case 18:
+            frame = CGRectMake(249, 184, w, h); break;
+        case 19:
+            frame = CGRectMake(21, 32, w, h); break;
+            
+    }
+    
+    return frame;
+    
     int x = arc4random() % 280;
     x += 20;
     
@@ -239,7 +300,6 @@ static GameManager* sharedGameManager = nil;
         fruit = [fruitList objectAtIndex:i];
         if (fruit.identifier == fruitId) {
             [fruit retain];
-            LOG(@"return_fruits = %@", fruit);
             return fruit;
         }
     }
