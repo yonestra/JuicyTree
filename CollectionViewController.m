@@ -62,9 +62,9 @@
     [self.view addSubview:pager];
     
     // *** 戻るボタン ***
-    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    backButton.frame = CGRectMake(50, 350, 220, 50);
-    [backButton setTitle:@"もどる" forState:UIControlStateNormal];
+    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(5, 10, 67, 40);
+    backButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_arrow.png"]];
     [backButton addTarget:self action:@selector(pushBackButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
