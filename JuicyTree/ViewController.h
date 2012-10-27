@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController {
     GameManager* gameManager;
     UIImageView *backgroundImageView;
+    UIView* gaugeBodyView;      // ゲージ
 }
 
 @end

@@ -37,6 +37,25 @@
     // make gamemanager
     gameManager = [GameManager sharedGameManager];
     
+    // ゲージ枠
+    UIView* gaugeFrameView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50-35, self.view.frame.size.width, 35)] autorelease];
+    gaugeFrameView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gauge_frame.png"]];
+    [self.view addSubview:gaugeFrameView];
+    
+    // ゲージの背景（白色透過）
+    UIView* gaugeBackgroundView = [[[UIView alloc] initWithFrame:gaugeFrameView.frame] autorelease];
+    gaugeBackgroundView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
+    [self.view insertSubview:gaugeBackgroundView belowSubview:gaugeFrameView];
+    
+    // ゲージ本体
+    gaugeBodyView = [[[UIView alloc] initWithFrame:gaugeFrameView.frame] autorelease];
+    CGRect frame = CGRectMake(gaugeBodyView.frame.origin.x, gaugeBodyView.frame.origin.y, 100, gaugeBodyView.frame.size.height);
+    gaugeBodyView.frame = frame;
+    gaugeBodyView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gauge.png"]];
+    [self.view insertSubview:gaugeBodyView belowSubview:gaugeFrameView];
+    
+    
+    
     // 広告表示枠
     UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)] autorelease];
     adView.backgroundColor = [UIColor blackColor];
