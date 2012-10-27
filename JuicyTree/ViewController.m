@@ -37,6 +37,11 @@
     // make gamemanager
     gameManager = [GameManager sharedGameManager];
     
+    // 広告表示枠
+    UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)] autorelease];
+    adView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:adView];
+    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(getFruits:) name:NOTIFICATION_CREATE_FRUIT object:nil];
     [notificationCenter addObserver:self selector:@selector(levelUpTree:) name:NOTIFICATION_LELEL_UP_TREE object:nil];
