@@ -4,21 +4,21 @@
 <array>
 	<dict>
 		<key>fruit_id</key>
-		<string>0</string>
+		<integer>0</integer>
 		<key>frequency</key>
-		<string>50</string>
+		<integer>50</integer>
 	</dict>
 	<dict>
 		<key>fruit_id</key>
-		<string>1</string>
+		<integer>1</integer>
 		<key>frequency</key>
-		<string>30</string>
+		<integer>30</integer>
 	</dict>
 	<dict>
 		<key>fruit_id</key>
-		<string>2</string>
+		<integer>2</integer>
 		<key>frequency</key>
-		<string>20</string>
+		<integer>20</integer>
 	</dict>
 </array>
 </plist>

@@ -1,48 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>New item</key>
+<array>
 	<dict>
 		<key>fruit_id</key>
-		<string>0</string>
+		<integer>0</integer>
 		<key>frequency</key>
-		<string>15</string>
+		<integer>15</integer>
 	</dict>
-	<key>New item - 2</key>
 	<dict>
 		<key>fruit_id</key>
-		<string>1</string>
+		<integer>1</integer>
 		<key>frequency</key>
-		<string>15</string>
+		<integer>15</integer>
 	</dict>
-	<key>New item - 3</key>
 	<dict>
 		<key>fruit_id</key>
-		<string>2</string>
+		<integer>2</integer>
 		<key>frequency</key>
-		<string>25</string>
+		<integer>25</integer>
 	</dict>
-	<key>New item - 4</key>
 	<dict>
 		<key>fruit_id</key>
-		<string>3</string>
+		<integer>3</integer>
 		<key>frequency</key>
-		<string>20</string>
+		<integer>20</integer>
 	</dict>
-	<key>New item - 5</key>
 	<dict>
 		<key>fruit_id</key>
-		<string>4</string>
+		<integer>4</integer>
 		<key>frequency</key>
-		<string>20</string>
+		<integer>20</integer>
 	</dict>
-	<key>New item - 6</key>
 	<dict>
 		<key>fruit_id</key>
-		<string>5</string>
+		<integer>5</integer>
 		<key>frequency</key>
-		<string>5</string>
+		<integer>5</integer>
 	</dict>
-</dict>
+</array>
 </plist>

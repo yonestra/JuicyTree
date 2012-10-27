@@ -12,6 +12,7 @@
 @implementation GameManager
 
 @synthesize fruitList;
+@synthesize fruitCurrentLevelList;
 
 static GameManager* sharedGameManager = nil;
 
@@ -34,6 +35,7 @@ static GameManager* sharedGameManager = nil;
         
         // 果物リストを作る
         [self createFruitList];
+        [self updateFruitCurrentLevelList];
         
         // 時間の計測を開始する
         [self startTimer];
@@ -43,6 +45,7 @@ static GameManager* sharedGameManager = nil;
 
 - (void)dealloc {
     [fruitList release], fruitList = nil;
+    [fruitCurrentLevelList release], fruitCurrentLevelList = nil;
     [sharedGameManager release];
     [super dealloc];
 }
@@ -63,6 +66,28 @@ static GameManager* sharedGameManager = nil;
         [fruitList addObject:fruits];
     }
 }
+
+// リソースファイル（Tree_Lv*.plist）から、現在の木レベルで成る果物情報を取得し、格納する
+- (void)updateFruitCurrentLevelList {
+    LOG_CURRENT_METHOD;
+    
+    if (fruitCurrentLevelList != nil) {
+        [fruitCurrentLevelList release], fruitCurrentLevelList = nil;
+    }
+    
+    // ファイル名の作成
+    NSString* fileName = [NSString stringWithFormat:@"Tree_Lv%d", treeLevel];
+
+    NSBundle* bundle = [NSBundle mainBundle];
+    NSString* path = [bundle pathForResource:fileName ofType:@"plist"];
+    fruitCurrentLevelList = [NSArray arrayWithContentsOfFile:path];
+    [fruitCurrentLevelList retain];
+    
+    for (NSDictionary* fruitElem in fruitCurrentLevelList) {
+        LOG(@"fruitElem = %@", fruitElem);
+    }
+}
+
 
 
 // 時間の計測を開始
@@ -118,13 +143,36 @@ static GameManager* sharedGameManager = nil;
     return brunkPos;
 }
 
-// 実らせる果実を決める
+
+// 実の種類を決める
+- (NSInteger)selectFruitsType {
+    int rand = arc4random() % 100;
+    
+    int stack = 0;
+    int freq = 0;
+    
+    for (NSDictionary* dic in fruitCurrentLevelList) {
+        freq = [[dic objectForKey:@"frequency"] intValue];
+        if (stack < rand && rand < (stack+freq)) {
+            return [[dic objectForKey:@"fruit_id"] intValue];
+        }
+        stack += freq;
+    }
+    return -1;
+}
+
+// 実らせる果実のオブジェクト作って返す
 - (Fruits*)selectFruits {
     Fruits* fruit;
     
-    // TODO: ツリーレベルを考慮した実の生成
-    int r = arc4random() % 25;
-    fruit = [self objectAtFruitId:r];
+    // 作る実の種類を決定する
+    NSInteger type = [self selectFruitsType];
+    if (type == -1) {
+        return NULL;
+    }
+    
+    // 実のオブジェクトを作る
+    fruit = [self objectAtFruitId:type];
     
     return fruit;
 }
@@ -240,8 +288,11 @@ static GameManager* sharedGameManager = nil;
 - (void)levelUpTree {
     treeLevel++;
     
-    // TODO: ViewControllerに通知
+    // メイン画面（ViewController）に通知
     [self notificateMainViewLevelUpTree:treeLevel];
+    
+    // 今の木レベルで実る果物リストに更新
+    [self updateFruitCurrentLevelList];
 }
 
 

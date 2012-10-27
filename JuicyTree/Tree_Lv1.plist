@@ -4,9 +4,9 @@
 <array>
 	<dict>
 		<key>fruit_id</key>
-		<string>0</string>
+		<integer>0</integer>
 		<key>frequency</key>
-		<string>100</string>
+		<integer>100</integer>
 	</dict>
 </array>
 </plist>
