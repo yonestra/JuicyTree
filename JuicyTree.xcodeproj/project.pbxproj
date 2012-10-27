@@ -10,6 +10,10 @@
 		2015C32416371CC1008E36F4 /* CollectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2015C32316371CC1008E36F4 /* CollectionManager.m */; };
 		204F75B0162EF3FE001C7BB3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */; };
 		20ADE52E163807430010300F /* fruits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20ADE52D163807430010300F /* fruits.plist */; };
+		20E553B31639935600429CDB /* Tree_Lv1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B21639935600429CDB /* Tree_Lv1.plist */; };
+		20E553B6163993B700429CDB /* Tree_Lv2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B5163993B700429CDB /* Tree_Lv2.plist */; };
+		20E553B81639955C00429CDB /* Tree_Lv3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B71639955C00429CDB /* Tree_Lv3.plist */; };
+		20E553BA1639966900429CDB /* Tree_Lv4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B91639966900429CDB /* Tree_Lv4.plist */; };
 		20FA23B7162C79DD009110FF /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23B6162C79DD009110FF /* CollectionViewController.m */; };
 		20FA23BB162C7B0C009110FF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BA162C7B0C009110FF /* GameManager.m */; };
 		20FA23BD162C7C09009110FF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23BC162C7C09009110FF /* ViewController.xib */; };
@@ -112,6 +116,10 @@
 		2015C32316371CC1008E36F4 /* CollectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionManager.m; sourceTree = "<group>"; };
 		204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		20ADE52D163807430010300F /* fruits.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fruits.plist; sourceTree = "<group>"; };
+		20E553B21639935600429CDB /* Tree_Lv1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv1.plist; sourceTree = "<group>"; };
+		20E553B5163993B700429CDB /* Tree_Lv2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv2.plist; sourceTree = "<group>"; };
+		20E553B71639955C00429CDB /* Tree_Lv3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv3.plist; sourceTree = "<group>"; };
+		20E553B91639966900429CDB /* Tree_Lv4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv4.plist; sourceTree = "<group>"; };
 		20FA23B5162C79DD009110FF /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = ../CollectionViewController.h; sourceTree = "<group>"; };
 		20FA23B6162C79DD009110FF /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = ../CollectionViewController.m; sourceTree = "<group>"; };
 		20FA23B9162C7B0C009110FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../GameManager.h; sourceTree = "<group>"; };
@@ -409,6 +417,10 @@
 				FB9D4C8B162C75B0002F42D4 /* InfoPlist.strings */,
 				FB9D4C8E162C75B0002F42D4 /* main.m */,
 				FB9D4C90162C75B0002F42D4 /* JuicyTree-Prefix.pch */,
+				20E553B21639935600429CDB /* Tree_Lv1.plist */,
+				20E553B5163993B700429CDB /* Tree_Lv2.plist */,
+				20E553B71639955C00429CDB /* Tree_Lv3.plist */,
+				20E553B91639966900429CDB /* Tree_Lv4.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -550,6 +562,10 @@
 				FB611B68162F2B6E003F0C50 /* ushi@2x.png in Resources */,
 				FB611B6A162F2BD2003F0C50 /* Default.png in Resources */,
 				20ADE52E163807430010300F /* fruits.plist in Resources */,
+				20E553B31639935600429CDB /* Tree_Lv1.plist in Resources */,
+				20E553B6163993B700429CDB /* Tree_Lv2.plist in Resources */,
+				20E553B81639955C00429CDB /* Tree_Lv3.plist in Resources */,
+				20E553BA1639966900429CDB /* Tree_Lv4.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

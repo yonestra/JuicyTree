@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>New item</key>
+	<dict>
+		<key>fruit_id</key>
+		<string>0</string>
+		<key>frequency</key>
+		<string>15</string>
+	</dict>
+	<key>New item - 2</key>
+	<dict>
+		<key>fruit_id</key>
+		<string>1</string>
+		<key>frequency</key>
+		<string>15</string>
+	</dict>
+	<key>New item - 3</key>
+	<dict>
+		<key>fruit_id</key>
+		<string>2</string>
+		<key>frequency</key>
+		<string>25</string>
+	</dict>
+	<key>New item - 4</key>
+	<dict>
+		<key>fruit_id</key>
+		<string>3</string>
+		<key>frequency</key>
+		<string>20</string>
+	</dict>
+	<key>New item - 5</key>
+	<dict>
+		<key>fruit_id</key>
+		<string>4</string>
+		<key>frequency</key>
+		<string>20</string>
+	</dict>
+	<key>New item - 6</key>
+	<dict>
+		<key>fruit_id</key>
+		<string>5</string>
+		<key>frequency</key>
+		<string>5</string>
+	</dict>
+</dict>
+</plist>
