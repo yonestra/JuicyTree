@@ -51,6 +51,7 @@
 
 // 通知（NotificationCenter）の種類
 #define NOTIFICATION_CREATE_FRUIT @"notificationCreateFruit"
+#define NOTIFICATION_POINT_UP @"notificationPointUp"
 #define NOTIFICATION_LELEL_UP_TREE @"notificationLevelUpTree"
 
 

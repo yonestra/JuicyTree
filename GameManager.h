@@ -33,5 +33,6 @@
 - (void)judgeLevelUpTree:(NSInteger)point;
 + (CGRect)positionId2Rect:(NSInteger)positionId;
 - (Fruits*)objectAtFruitId:(NSInteger)fruitId;
+- (NSInteger)pointToNextLevel;
 
 @end

@@ -49,12 +49,10 @@
     
     // ゲージ本体
     gaugeBodyView = [[[UIView alloc] initWithFrame:gaugeFrameView.frame] autorelease];
-    CGRect frame = CGRectMake(gaugeBodyView.frame.origin.x, gaugeBodyView.frame.origin.y, 100, gaugeBodyView.frame.size.height);
+    CGRect frame = CGRectMake(gaugeBodyView.frame.origin.x, gaugeBodyView.frame.origin.y, 0, gaugeBodyView.frame.size.height);
     gaugeBodyView.frame = frame;
     gaugeBodyView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gauge.png"]];
     [self.view insertSubview:gaugeBodyView belowSubview:gaugeFrameView];
-    
-    
     
     // 広告表示枠
     UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)] autorelease];
@@ -63,6 +61,7 @@
     
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(getFruits:) name:NOTIFICATION_CREATE_FRUIT object:nil];
+    [notificationCenter addObserver:self selector:@selector(pointUp:) name:NOTIFICATION_POINT_UP object:nil];
     [notificationCenter addObserver:self selector:@selector(levelUpTree:) name:NOTIFICATION_LELEL_UP_TREE object:nil];
 }
 
@@ -97,6 +96,14 @@
     }
 }
 
+// ポイントアップ!
+- (void)pointUp:(NSNotificationCenter*)center {
+    NSInteger* point = [[[center userInfo] objectForKey:@"point"] intValue];
+    
+    // animationでゲージを増やす
+    [self growGaugeWithAnimatiion:point];
+}
+
 // 木がレベルアップ!
 - (void)levelUpTree:(NSNotificationCenter*)center {
     LOG_CURRENT_METHOD;
@@ -122,6 +129,10 @@
     backgroundImageView.frame = self.view.frame;
     [self.view insertSubview:backgroundImageView atIndex:0];
     [backgroundImageView release];
+    
+    // ゲージをスタート位置
+    gaugeBodyView.frame = CGRectMake(gaugeBodyView.frame.origin.x, gaugeBodyView.frame.origin.y,
+                                     0, gaugeBodyView.frame.size.height);
     
 }
 
@@ -158,5 +169,25 @@
     CGPoint point = [[touches anyObject] locationInView:self.view];
     LOG(@"touch (x,y) = %f, %f", point.x, point.y);
 }
+
+- (void)growGaugeWithAnimatiion:(NSInteger)point {
+    LOG_CURRENT_METHOD;
+    int maxPoint = [[GameManager sharedGameManager] pointToNextLevel];
+    
+    float width = point/(float)maxPoint;
+    LOG(@"point, maxPoint, width = %d, %d, %f", point, maxPoint, width);
+    
+    [UIView animateWithDuration:0.5f
+                     animations:^{
+                         gaugeBodyView.frame = CGRectMake(0,
+                                                          gaugeBodyView.frame.origin.y,
+                                                          width*320,
+                                                          gaugeBodyView.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                         [[GameManager sharedGameManager] judgeLevelUpTree:point];
+                     }];
+}
+
 
 @end

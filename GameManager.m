@@ -224,6 +224,14 @@ static GameManager* sharedGameManager = nil;
     [notificationCenter postNotificationName:NOTIFICATION_CREATE_FRUIT object:self userInfo:param];
 }
 
+// メイン画面に「ポイント増えたよ！」とお知らせする
+// お知らせの際には、現在のポイントを渡す
+- (void)notificateMainViewPointUp:(NSInteger)point {
+    NSDictionary* param = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:point] forKey:@"point"];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter postNotificationName:NOTIFICATION_POINT_UP object:self userInfo:param];
+}
+
 // メイン画面に「木レベルあがったよ！」とお知らせする
 // お知らせの際には、レベルアップ後の木レベルを渡す
 - (void)notificateMainViewLevelUpTree:(NSInteger)treeLevel {
@@ -236,10 +244,8 @@ static GameManager* sharedGameManager = nil;
 - (void)cropFruits:(Fruits*)fruits {
     // ポイント加算
     totalPoint += fruits.points;
+    [self notificateMainViewPointUp:totalPoint];
     LOG(@"point up! current = %d", totalPoint);
-    
-    // 木のレベルアップが必要かをチェック
-    [self judgeLevelUpTree:totalPoint];
     
     // 実のなるスペースを空ける
     NSInteger key = fruits.positionId;
@@ -253,31 +259,31 @@ static GameManager* sharedGameManager = nil;
 - (void)judgeLevelUpTree:(NSInteger)point {
     LOG(@"treeLevel = %d, point = %d", treeLevel, point);
     // あるポイントを超えたら木を進化させる
-    if (treeLevel == 1 && point > TREE_LEVEL_UP_LINE_LV_1) {
+    if (treeLevel == 1 && point >= TREE_LEVEL_UP_LINE_LV_1) {
         [self levelUpTree];
     }
-    if (treeLevel == 2 && point > TREE_LEVEL_UP_LINE_LV_2) {
+    if (treeLevel == 2 && point >= TREE_LEVEL_UP_LINE_LV_2) {
         [self levelUpTree];
     }
-    if (treeLevel == 3 && point > TREE_LEVEL_UP_LINE_LV_3) {
+    if (treeLevel == 3 && point >= TREE_LEVEL_UP_LINE_LV_3) {
         [self levelUpTree];
     }
-    if (treeLevel == 4 && point > TREE_LEVEL_UP_LINE_LV_4) {
+    if (treeLevel == 4 && point >= TREE_LEVEL_UP_LINE_LV_4) {
         [self levelUpTree];
     }
-    if (treeLevel == 5 && point > TREE_LEVEL_UP_LINE_LV_5) {
+    if (treeLevel == 5 && point >= TREE_LEVEL_UP_LINE_LV_5) {
         [self levelUpTree];
     }
-    if (treeLevel == 6 && point > TREE_LEVEL_UP_LINE_LV_6) {
+    if (treeLevel == 6 && point >= TREE_LEVEL_UP_LINE_LV_6) {
         [self levelUpTree];
     }
-    if (treeLevel == 7 && point > TREE_LEVEL_UP_LINE_LV_7) {
+    if (treeLevel == 7 && point >= TREE_LEVEL_UP_LINE_LV_7) {
         [self levelUpTree];
     }
-    if (treeLevel == 8 && point > TREE_LEVEL_UP_LINE_LV_8) {
+    if (treeLevel == 8 && point >= TREE_LEVEL_UP_LINE_LV_8) {
         [self levelUpTree];
     }
-    if (treeLevel == 9 && point > TREE_LEVEL_UP_LINE_LV_9) {
+    if (treeLevel == 9 && point >= TREE_LEVEL_UP_LINE_LV_9) {
         [self levelUpTree];
     }
 
@@ -384,5 +390,39 @@ static GameManager* sharedGameManager = nil;
     return NULL;
 }
 
+- (NSInteger)pointToNextLevel {
+    NSInteger pointToNextLevel = 0;
+    switch (treeLevel) {
+        case 1:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_1;
+            break;
+        case 2:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 3:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 4:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 5:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 6:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 7:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 8:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+        case 9:
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            break;
+    }
+    
+    return pointToNextLevel;
+}
 
 @end
