@@ -400,25 +400,25 @@ static GameManager* sharedGameManager = nil;
             pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
             break;
         case 3:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_3;
             break;
         case 4:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_4;
             break;
         case 5:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_5;
             break;
         case 6:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_6;
             break;
         case 7:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_7;
             break;
         case 8:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_8;
             break;
         case 9:
-            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_2;
+            pointToNextLevel = TREE_LEVEL_UP_LINE_LV_9;
             break;
     }
     

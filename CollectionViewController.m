@@ -128,6 +128,12 @@
         UIImage* image = [UIImage imageNamed:fruit.imageName];
         UIImageView* imageView = [[[UIImageView alloc] initWithImage:image] autorelease];
         imageView.frame = CGRectMake((50+35)*col, (50+35)*row, 50, 50);
+        CALayer* layer = imageView.layer;
+        layer.shadowOffset = CGSizeMake(2.5, 2.5);
+        layer.shadowColor = [[UIColor blackColor] CGColor];
+        layer.shadowOpacity = 0.5;
+        
+        
         [fruitSetView addSubview:imageView];
         [self.view addSubview:fruitSetView];
         [fruit release];
