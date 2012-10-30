@@ -383,8 +383,8 @@ static GameManager* sharedGameManager = nil;
     for (int i=0; i<[fruitList count]; i++) {
         fruit = [fruitList objectAtIndex:i];
         if (fruit.identifier == fruitId) {
-            [fruit retain];
-            return fruit;
+            Fruits* newFruits = [fruit copy];
+            return newFruits;
         }
     }
     return NULL;

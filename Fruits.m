@@ -33,6 +33,18 @@
     [super dealloc];
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    Fruits* copy = [[[self class] allocWithZone:zone] init];
+    
+    copy.identifier = identifier;
+    copy.imageName  = imageName;
+    copy.name       = name;
+    copy.points     = points;
+    
+    return copy;
+}
+
 @end
 
 
