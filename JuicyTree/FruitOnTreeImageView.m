@@ -34,7 +34,7 @@
 }
 */
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)crop
 {
     LOG_CURRENT_METHOD;
     GameManager *gm = [GameManager sharedGameManager];
@@ -83,7 +83,11 @@
                }];
           }];
      }];
-    
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self crop];
 }
 
 - (void) bornAmination

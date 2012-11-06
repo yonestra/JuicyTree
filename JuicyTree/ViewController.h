@@ -13,6 +13,7 @@
     GameManager* gameManager;
     UIImageView *backgroundImageView;
     UIView* gaugeBodyView;      // ゲージ
+    NSMutableArray* fruitsArray;
 }
 
 @end

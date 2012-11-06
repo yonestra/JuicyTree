@@ -17,10 +17,20 @@
 
 @implementation ViewController
 
+//-(id)init
+//{
+//    self = [super init];
+//    if (self) {
+//        
+//    }
+//    return self;
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    fruitsArray = [[NSMutableArray alloc] init];
     
     backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tree_lv1.png"]];
     backgroundImageView.frame = self.view.frame;
@@ -74,12 +84,12 @@
 - (void)dealloc
 {
     [backgroundImageView release], backgroundImageView = nil;
+    [fruitsArray release], fruitsArray = nil;
     [super dealloc];
 }
 
 - (void)getFruits:(NSNotificationCenter*)center
 {
-    
     NSArray *fruits = [[center userInfo] objectForKey:@"fruitsArray"];
     for (Fruits *fruit in fruits) {
         FruitOnTreeImageView *fruitImageView = [[[FruitOnTreeImageView alloc] init] autorelease];
@@ -93,12 +103,13 @@
         [fruitImageView setTransform:scale];
         [self.view addSubview:fruitImageView];
         [fruitImageView bornAmination];
+        [fruitsArray addObject:fruitImageView];
     }
 }
 
 // ポイントアップ!
 - (void)pointUp:(NSNotificationCenter*)center {
-    NSInteger* point = [[[center userInfo] objectForKey:@"point"] intValue];
+    NSInteger point = [[[center userInfo] objectForKey:@"point"] intValue];
     
     // animationでゲージを増やす
     [self growGaugeWithAnimatiion:point];
@@ -165,9 +176,15 @@
     [collectionVC release];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint point = [[touches anyObject] locationInView:self.view];
-    LOG(@"touch (x,y) = %f, %f", point.x, point.y);
+    for (FruitOnTreeImageView* fruitImage in [fruitsArray reverseObjectEnumerator]) {
+        if (CGRectContainsPoint(fruitImage.frame, point) == 1) {
+            [fruitsArray removeObject:fruitImage];
+            [fruitImage crop];
+        }
+    }
 }
 
 - (void)growGaugeWithAnimatiion:(NSInteger)point {
