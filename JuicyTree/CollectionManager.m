@@ -11,7 +11,7 @@
 
 @implementation CollectionManager
 
-@synthesize collections;
+@synthesize collections = collections_;
 
 static CollectionManager* collectionManager = nil;
 
@@ -27,26 +27,28 @@ static CollectionManager* collectionManager = nil;
 - (CollectionManager*)init {
     if (self = [super init]) {
         // FIXME: リーク?
-        collections = [[NSMutableArray alloc] init];
+        self.collections = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
+
 -(void)dealloc {
-    [collections release], collections = nil;
+    [collections_ release], collections_ = nil;
+    [collectionManager release], collectionManager = nil;
     [super dealloc];
 }
 
 // 果実をコレクションに追加する
 - (BOOL)appendFruitsToCollection:(Fruits*)fruit {
     NSString* fruit_id = [NSString stringWithFormat:@"%d", fruit.identifier];
-    if ([collections containsObject:fruit_id]) {
+    if ([collections_ containsObject:fruit_id]) {
         // 既にコレクションされてる
         return NO;
     }
     else {
         // 初めての実。コレクションに追加する
-        [collections addObject:fruit_id];
+        [collections_ addObject:fruit_id];
         return YES;
     }
 }
@@ -55,7 +57,7 @@ static CollectionManager* collectionManager = nil;
 // 修正を加えていく予定
 - (Fruits*)getFruitByFruitIdentifier:(NSInteger)fruitIdentifier {
     NSString* fruit_id = [NSString stringWithFormat:@"%d", fruitIdentifier];
-    if ([collections containsObject:fruit_id]) {
+    if ([collections_ containsObject:fruit_id]) {
         return [[GameManager sharedGameManager] objectAtFruitId:fruitIdentifier];
     }
     else {

@@ -230,7 +230,7 @@
 		<key>imageName</key>
 		<string>ipone.png</string>
 		<key>points</key>
-		<real>2</real>
+		<integer>2000</integer>
 	</dict>
 	<dict>
 		<key>id</key>

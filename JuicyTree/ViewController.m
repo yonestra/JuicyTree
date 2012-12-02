@@ -29,10 +29,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    // make gamemanager
+    gameManager = [GameManager sharedGameManager];
+    
     fruitsArray = [[NSMutableArray alloc] init];
     
-    backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tree_lv1.png"]];
+    NSString* bgFileName = [NSString stringWithFormat:@"tree_lv%d.png", gameManager.treeLevel];
+    backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:bgFileName]];
     backgroundImageView.frame = self.view.frame;
     [self.view addSubview:backgroundImageView];
     
@@ -44,8 +48,6 @@
                  forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goCollectionButton];
     
-    // make gamemanager
-    gameManager = [GameManager sharedGameManager];
     
     // ゲージ枠
     UIView* gaugeFrameView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50-35, self.view.frame.size.width, 35)] autorelease];
@@ -63,6 +65,8 @@
     gaugeBodyView.frame = frame;
     gaugeBodyView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gauge.png"]];
     [self.view insertSubview:gaugeBodyView belowSubview:gaugeFrameView];
+    [self growGaugeWithAnimatiion:gameManager.totalPoint];
+    
     
     // 広告表示枠
     UIView* adView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)] autorelease];
@@ -73,6 +77,16 @@
     [notificationCenter addObserver:self selector:@selector(getFruits:) name:NOTIFICATION_CREATE_FRUIT object:nil];
     [notificationCenter addObserver:self selector:@selector(pointUp:) name:NOTIFICATION_POINT_UP object:nil];
     [notificationCenter addObserver:self selector:@selector(levelUpTree:) name:NOTIFICATION_LELEL_UP_TREE object:nil];
+    
+    // ポップアップを作っておく
+    popUpWindow = [[PopUpWindowView alloc] initWithFrame:CGRectMake(10, 150, 300, 150)
+                                                                     type:0
+                                                                  message:@"レベルアップしました！"];
+    popUpWindow.delegate = self;
+    [self.view addSubview:popUpWindow];
+    
+    [gameManager initFruitArrayOnTree];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,6 +99,7 @@
 {
     [backgroundImageView release], backgroundImageView = nil;
     [fruitsArray release], fruitsArray = nil;
+    [popUpWindow release], popUpWindow = nil;
     [super dealloc];
 }
 
@@ -121,13 +136,15 @@
     NSNumber* treeLevelNum = [[center userInfo] objectForKey:@"treeLevel"];
     NSInteger treeLevel = [treeLevelNum intValue];
     
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
-                                                    message:@"木レベルがあがりました！おめでとう！"
-                                                   delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"OK", nil];
-    [alert show];
-    [alert release];
+//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
+//                                                    message:@"木レベルがあがりました！おめでとう！"
+//                                                   delegate:self
+//                                          cancelButtonTitle:nil
+//                                          otherButtonTitles:@"OK", nil];
+//    [alert show];
+//    [alert release];
+    popUpWindow.message = @"木レベルがあがりました！おめでとう！";
+    [popUpWindow appearPopUpWindowWithAnimation:YES];
     
     if (backgroundImageView != nil) {
         [backgroundImageView removeFromSuperview];
@@ -179,7 +196,9 @@
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint point = [[touches anyObject] locationInView:self.view];
+    LOG(@"array_size = %d", [fruitsArray count]);
     for (FruitOnTreeImageView* fruitImage in [fruitsArray reverseObjectEnumerator]) {
+        LOG(@"fruitImage = %@", fruitImage);
         if (CGRectContainsPoint(fruitImage.frame, point) == 1) {
             [fruitsArray removeObject:fruitImage];
             [fruitImage crop];
@@ -206,5 +225,11 @@
                      }];
 }
 
+
+#pragma mark PopUpWindowDelegate
+
+- (void)selectAtIndex:(NSInteger)index {
+    [popUpWindow closePopUpWindow];
+}
 
 @end

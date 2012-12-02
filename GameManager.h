@@ -16,18 +16,21 @@
 @interface GameManager : NSObject {
     NSMutableArray* fruitList;                   // このゲームで扱う全ての果物リスト
     NSMutableArray* fruitCurrentLevelList;       // 現在のレベルで成る可能性のある果物リスト
-    NSMutableDictionary* FruitsOnTreeDictionary; // 現在木になっている果物の情報リスト（posId -> fruit）
     NSInteger totalPoint;                        // ユーザが保持しているポイント
     NSInteger treeLevel;                         // ユーザの現在の木レベル
-    
     NSInteger time;                              // タイマー用
 }
 
 @property (nonatomic, retain) NSArray* fruitList;
 @property (nonatomic, retain) NSMutableArray* fruitCurrentLevelList;
+@property (nonatomic, retain) NSMutableDictionary* fruitsOnTreeDictionary;  // 現在木になっている果物の情報リスト（posId -> fruit）
+@property (nonatomic, assign) NSInteger totalPoint;
+@property (nonatomic, assign) NSInteger treeLevel;
 
 + (GameManager*)sharedGameManager;
 - (void)createFruitList;
+- (void)updateFruitCurrentLevelList;
+- (void)initFruitArrayOnTree;
 - (void)checkStatusByLaunchApplication:(NSInteger)duration;
 - (void)cropFruits:(Fruits*)fruits;
 - (void)judgeLevelUpTree:(NSInteger)point;

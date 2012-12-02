@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "GameManager.h"
+#import "PopUpWindowView.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController <PopUpWindowDelegate> {
     GameManager* gameManager;
     UIImageView *backgroundImageView;
     UIView* gaugeBodyView;      // ゲージ
     NSMutableArray* fruitsArray;
+    PopUpWindowView *popUpWindow;
 }
 
 @end

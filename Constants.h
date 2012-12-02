@@ -48,6 +48,8 @@
 
 // コレクションビュー
 #define COLLECTION_FRUIT_PER_PAGE 6     // 1ページあたりに表示する果物
+#define COLLECTION_FRUIT_COUNT    25    // ゲームに登場する果実の総数
+#define COLLECTION_PAGE_NUMBER  5    // ページ数
 
 // 通知（NotificationCenter）の種類
 #define NOTIFICATION_CREATE_FRUIT @"notificationCreateFruit"
