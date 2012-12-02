@@ -311,7 +311,6 @@
 				FBED199D162DED6900F145C0 /* FruitOnTreeImageView.m */,
 				FB4417DF166A924C00B48BFD /* Animal.h */,
 				FB4417E0166A924C00B48BFD /* Animal.m */,
->>>>>>> 3491894a4b48065884d7c731c3042c703c41d3f7
 			);
 			name = ViewController;
 			sourceTree = "<group>";
