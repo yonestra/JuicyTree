@@ -22,6 +22,7 @@
 		20FA23BB162C7B0C009110FF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BA162C7B0C009110FF /* GameManager.m */; };
 		20FA23BD162C7C09009110FF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FA23BC162C7C09009110FF /* ViewController.xib */; };
 		20FA23C0162C7DE3009110FF /* Fruits.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FA23BF162C7DE3009110FF /* Fruits.m */; };
+		FB4417E1166A924C00B48BFD /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4417E0166A924C00B48BFD /* Animal.m */; };
 		FB611B15162F2B6E003F0C50 /* akuma.png in Resources */ = {isa = PBXBuildFile; fileRef = FB611AC1162F2B6D003F0C50 /* akuma.png */; };
 		FB611B16162F2B6E003F0C50 /* akuma@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB611AC2162F2B6D003F0C50 /* akuma@2x.png */; };
 		FB611B17162F2B6E003F0C50 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FB611AC3162F2B6D003F0C50 /* apple.png */; };
@@ -135,6 +136,8 @@
 		20FA23BC162C7C09009110FF /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		20FA23BE162C7DE3009110FF /* Fruits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fruits.h; path = ../Fruits.h; sourceTree = "<group>"; };
 		20FA23BF162C7DE3009110FF /* Fruits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fruits.m; path = ../Fruits.m; sourceTree = "<group>"; };
+		FB4417DF166A924C00B48BFD /* Animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animal.h; sourceTree = SOURCE_ROOT; };
+		FB4417E0166A924C00B48BFD /* Animal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animal.m; sourceTree = SOURCE_ROOT; };
 		FB611AC1162F2B6D003F0C50 /* akuma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akuma.png; sourceTree = "<group>"; };
 		FB611AC2162F2B6D003F0C50 /* akuma@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "akuma@2x.png"; sourceTree = "<group>"; };
 		FB611AC3162F2B6D003F0C50 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				20FA23BC162C7C09009110FF /* ViewController.xib */,
 				FBED199C162DED6900F145C0 /* FruitOnTreeImageView.h */,
 				FBED199D162DED6900F145C0 /* FruitOnTreeImageView.m */,
+				FB4417DF166A924C00B48BFD /* Animal.h */,
+				FB4417E0166A924C00B48BFD /* Animal.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 				20FA23C0162C7DE3009110FF /* Fruits.m in Sources */,
 				FBED199E162DED6900F145C0 /* FruitOnTreeImageView.m in Sources */,
 				2015C32416371CC1008E36F4 /* CollectionManager.m in Sources */,
+				FB4417E1166A924C00B48BFD /* Animal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
