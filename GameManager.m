@@ -13,6 +13,8 @@
 
 @synthesize fruitList;
 @synthesize fruitCurrentLevelList;
+@synthesize treeLevel;
+@synthesize totalPoint;
 
 static GameManager* sharedGameManager = nil;
 

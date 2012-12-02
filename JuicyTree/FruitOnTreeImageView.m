@@ -24,6 +24,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [fruit release];
+    [super dealloc];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

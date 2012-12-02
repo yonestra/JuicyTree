@@ -8,6 +8,14 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "CollectionManager.h"
+
+@interface AppDelegate ()
+
+- (void)loadData;
+- (void)saveData;
+
+@end
 
 @implementation AppDelegate
 
@@ -22,6 +30,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self loadData];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     ViewController *vc = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
@@ -49,6 +59,8 @@
     
     NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:finData forKey:@"FIN_DATE"];
+    
+    [self saveData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -75,7 +87,53 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
 }
+
+
+#pragma mark -
+#pragma mark loadAndSaveData
+
+// データを復元する
+- (void)loadData {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    GameManager *gm = [GameManager sharedGameManager];
+    
+    // 木レベル
+    gm.treeLevel = [defaults integerForKey:@"treeLevel"];
+    
+    // 現在の保持ポイント
+    gm.totalPoint = [defaults integerForKey:@"totalPoint"];
+    
+    [gm updateFruitCurrentLevelList];
+    
+    // コレクション情報
+    NSArray *collectionArray = [defaults arrayForKey:@"collections"];
+    [CollectionManager sharedCollectionManager].collections
+        = [NSMutableArray arrayWithArray:collectionArray];
+}
+
+// データを保存する
+- (void)saveData {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    GameManager *gm = [GameManager sharedGameManager];
+    
+    // 木レベル
+    LOG(@"gm.treeLevel = %d", gm.treeLevel);
+    [defaults setInteger:gm.treeLevel forKey:@"treeLevel"];
+    
+    // 現在の保持ポイント
+    [defaults setInteger:gm.totalPoint forKey:@"totalPoint"];
+    
+    // コレクション情報
+    NSMutableArray *collectionMutableArray = [CollectionManager sharedCollectionManager].collections;
+    NSArray *collectionArray = [NSArray arrayWithArray:collectionMutableArray];
+    [defaults setObject:collectionArray forKey:@"collections"];
+    
+    [defaults synchronize];
+}
+
 
 @end

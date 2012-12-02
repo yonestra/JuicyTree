@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20131AA0166A541D00983E20 /* Tree_Lv5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20131A9F166A541D00983E20 /* Tree_Lv5.plist */; };
+		20131AA3166A542700983E20 /* Tree_Lv6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20131AA2166A542700983E20 /* Tree_Lv6.plist */; };
+		20131AA5166A543200983E20 /* Tree_Lv7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20131AA4166A543200983E20 /* Tree_Lv7.plist */; };
+		20131AA7166A543B00983E20 /* Tree_Lv8.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20131AA6166A543A00983E20 /* Tree_Lv8.plist */; };
+		20131AA9166A544500983E20 /* Tree_Lv9.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20131AA8166A544500983E20 /* Tree_Lv9.plist */; };
+		20131AAB166A545000983E20 /* Tree_Lv10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20131AAA166A545000983E20 /* Tree_Lv10.plist */; };
 		2015C32416371CC1008E36F4 /* CollectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2015C32316371CC1008E36F4 /* CollectionManager.m */; };
 		203A398C16497EAC004B7450 /* collection_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 203A398A16497EAC004B7450 /* collection_page.png */; };
 		203A398D16497EAC004B7450 /* collection_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 203A398B16497EAC004B7450 /* collection_page@2x.png */; };
@@ -14,6 +20,7 @@
 		203A399216497EE7004B7450 /* back_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 203A399016497EE7004B7450 /* back_arrow@2x.png */; };
 		204F75B0162EF3FE001C7BB3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */; };
 		20ADE52E163807430010300F /* fruits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20ADE52D163807430010300F /* fruits.plist */; };
+		20B3E971166A5F5F008E44C5 /* PopUpWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B3E970166A5F5F008E44C5 /* PopUpWindowView.m */; };
 		20E553B31639935600429CDB /* Tree_Lv1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B21639935600429CDB /* Tree_Lv1.plist */; };
 		20E553B6163993B700429CDB /* Tree_Lv2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B5163993B700429CDB /* Tree_Lv2.plist */; };
 		20E553B81639955C00429CDB /* Tree_Lv3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E553B71639955C00429CDB /* Tree_Lv3.plist */; };
@@ -116,6 +123,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20131A9F166A541D00983E20 /* Tree_Lv5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv5.plist; sourceTree = "<group>"; };
+		20131AA2166A542700983E20 /* Tree_Lv6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv6.plist; sourceTree = "<group>"; };
+		20131AA4166A543200983E20 /* Tree_Lv7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv7.plist; sourceTree = "<group>"; };
+		20131AA6166A543A00983E20 /* Tree_Lv8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv8.plist; sourceTree = "<group>"; };
+		20131AA8166A544500983E20 /* Tree_Lv9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv9.plist; sourceTree = "<group>"; };
+		20131AAA166A545000983E20 /* Tree_Lv10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv10.plist; sourceTree = "<group>"; };
 		2015C32216371CC1008E36F4 /* CollectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionManager.h; sourceTree = "<group>"; };
 		2015C32316371CC1008E36F4 /* CollectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionManager.m; sourceTree = "<group>"; };
 		203A398A16497EAC004B7450 /* collection_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection_page.png; sourceTree = "<group>"; };
@@ -124,6 +137,8 @@
 		203A399016497EE7004B7450 /* back_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow@2x.png"; sourceTree = "<group>"; };
 		204F75AF162EF3FE001C7BB3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		20ADE52D163807430010300F /* fruits.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fruits.plist; sourceTree = "<group>"; };
+		20B3E96F166A5F5F008E44C5 /* PopUpWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpWindowView.h; sourceTree = "<group>"; };
+		20B3E970166A5F5F008E44C5 /* PopUpWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpWindowView.m; sourceTree = "<group>"; };
 		20E553B21639935600429CDB /* Tree_Lv1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv1.plist; sourceTree = "<group>"; };
 		20E553B5163993B700429CDB /* Tree_Lv2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv2.plist; sourceTree = "<group>"; };
 		20E553B71639955C00429CDB /* Tree_Lv3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tree_Lv3.plist; sourceTree = "<group>"; };
@@ -270,18 +285,27 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		20FA23B8162C79E2009110FF /* View */ = {
+		20B3E972166A5F65008E44C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20B3E96F166A5F5F008E44C5 /* PopUpWindowView.h */,
+				20B3E970166A5F5F008E44C5 /* PopUpWindowView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		20FA23B8162C79E2009110FF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				20FA23B5162C79DD009110FF /* CollectionViewController.h */,
 				20FA23B6162C79DD009110FF /* CollectionViewController.m */,
+				FBED199C162DED6900F145C0 /* FruitOnTreeImageView.h */,
+				FBED199D162DED6900F145C0 /* FruitOnTreeImageView.m */,
 				FB9D4C9A162C75B0002F42D4 /* ViewController.h */,
 				FB9D4C9B162C75B0002F42D4 /* ViewController.m */,
 				20FA23BC162C7C09009110FF /* ViewController.xib */,
-				FBED199C162DED6900F145C0 /* FruitOnTreeImageView.h */,
-				FBED199D162DED6900F145C0 /* FruitOnTreeImageView.m */,
 			);
-			name = View;
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		20FA23C4162C81BB009110FF /* Resource */ = {
@@ -409,11 +433,12 @@
 		FB9D4C88162C75B0002F42D4 /* JuicyTree */ = {
 			isa = PBXGroup;
 			children = (
+				20B3E972166A5F65008E44C5 /* View */,
 				FB9D4C91162C75B0002F42D4 /* AppDelegate.h */,
 				FB9D4C92162C75B0002F42D4 /* AppDelegate.m */,
 				FBED19A0162DED9B00F145C0 /* Constants.h */,
 				2048A923163857D900EC4740 /* Model */,
-				20FA23B8162C79E2009110FF /* View */,
+				20FA23B8162C79E2009110FF /* ViewController */,
 				2015C32016371C90008E36F4 /* Manager */,
 				FB9D4C89162C75B0002F42D4 /* Supporting Files */,
 				20FA23C4162C81BB009110FF /* Resource */,
@@ -433,6 +458,12 @@
 				20E553B5163993B700429CDB /* Tree_Lv2.plist */,
 				20E553B71639955C00429CDB /* Tree_Lv3.plist */,
 				20E553B91639966900429CDB /* Tree_Lv4.plist */,
+				20131A9F166A541D00983E20 /* Tree_Lv5.plist */,
+				20131AA2166A542700983E20 /* Tree_Lv6.plist */,
+				20131AA4166A543200983E20 /* Tree_Lv7.plist */,
+				20131AA6166A543A00983E20 /* Tree_Lv8.plist */,
+				20131AA8166A544500983E20 /* Tree_Lv9.plist */,
+				20131AAA166A545000983E20 /* Tree_Lv10.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -582,6 +613,12 @@
 				203A398D16497EAC004B7450 /* collection_page@2x.png in Resources */,
 				203A399116497EE7004B7450 /* back_arrow.png in Resources */,
 				203A399216497EE7004B7450 /* back_arrow@2x.png in Resources */,
+				20131AA0166A541D00983E20 /* Tree_Lv5.plist in Resources */,
+				20131AA3166A542700983E20 /* Tree_Lv6.plist in Resources */,
+				20131AA5166A543200983E20 /* Tree_Lv7.plist in Resources */,
+				20131AA7166A543B00983E20 /* Tree_Lv8.plist in Resources */,
+				20131AA9166A544500983E20 /* Tree_Lv9.plist in Resources */,
+				20131AAB166A545000983E20 /* Tree_Lv10.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +637,7 @@
 				20FA23C0162C7DE3009110FF /* Fruits.m in Sources */,
 				FBED199E162DED6900F145C0 /* FruitOnTreeImageView.m in Sources */,
 				2015C32416371CC1008E36F4 /* CollectionManager.m in Sources */,
+				20B3E971166A5F5F008E44C5 /* PopUpWindowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +663,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -639,6 +678,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "D16E7AA9-96ED-402B-83F4-39E0AB6F4078";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC410277-96A4-432B-A17C-EDADC0FEFE6A";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -651,7 +692,8 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -659,6 +701,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "D16E7AA9-96ED-402B-83F4-39E0AB6F4078";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D16E7AA9-96ED-402B-83F4-39E0AB6F4078";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -667,10 +711,14 @@
 		FB9D4CA3162C75B0002F42D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JuicyTree/JuicyTree-Prefix.pch";
 				INFOPLIST_FILE = "JuicyTree/JuicyTree-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -678,10 +726,14 @@
 		FB9D4CA4162C75B0002F42D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JuicyTree/JuicyTree-Prefix.pch";
 				INFOPLIST_FILE = "JuicyTree/JuicyTree-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

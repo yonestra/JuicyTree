@@ -25,9 +25,12 @@
 
 @property (nonatomic, retain) NSArray* fruitList;
 @property (nonatomic, retain) NSMutableArray* fruitCurrentLevelList;
+@property (nonatomic, assign) NSInteger totalPoint;
+@property (nonatomic, assign) NSInteger treeLevel;
 
 + (GameManager*)sharedGameManager;
 - (void)createFruitList;
+- (void)updateFruitCurrentLevelList;
 - (void)checkStatusByLaunchApplication:(NSInteger)duration;
 - (void)cropFruits:(Fruits*)fruits;
 - (void)judgeLevelUpTree:(NSInteger)point;
