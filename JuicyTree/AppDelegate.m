@@ -30,6 +30,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self setDefaultValue];
     [self loadData];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
@@ -53,12 +54,6 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    // 終了時の日時を記憶
-    NSDate* finData = [NSDate date];
-    LOG(@"%@", finData);
-    
-    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:finData forKey:@"FIN_DATE"];
     
     [self saveData];
 }
@@ -72,17 +67,6 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
-    // 起動時の日時を取得
-    NSDate* startDate = [NSDate date];
-    
-    // 前回終了時の時間を取得
-    NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
-    NSDate* finDate = [ud objectForKey:@"FIN_DATE"];
-    
-    // 時差を取得
-    NSTimeInterval duration = [startDate timeIntervalSinceDate:finDate];
-    //GameManager* gameManager = [GameManager sharedGameManager];
-    //[gameManager checkStatusByLaunchApplication:duration];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -93,6 +77,19 @@
 
 #pragma mark -
 #pragma mark loadAndSaveData
+
+// 保存データのデフォルト値を設定する
+- (void)setDefaultValue {
+    // NSUserDefaultsに初期値を登録する
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];  // 取得
+    NSMutableDictionary *defaultDictionary = [NSMutableDictionary dictionary];
+    [defaultDictionary setObject:@"1" forKey:@"treeLevel"];  // をKEY_Iというキーの初期値は99
+    [defaultDictionary setObject:@"0" forKey:@"totalPoint"];  // をKEY_Fというキーの初期値は99.99
+//    [defaultDictionary setObject:nil forKey:@"fruitsOnTreeDictionary"];  // をKEY_Dというキーの初期値は88.88
+//    [defaultDictionary setObject:nil forKey:@"collections"];  // をKEY_Bというキーの初期値はYES
+//    [defaultDictionary setObject:nil forKey:@"finDate"];  // をKEY_Sというキーの初期値はhoge
+    [defaults registerDefaults:defaultDictionary];
+}
 
 // データを復元する
 - (void)loadData {
@@ -105,13 +102,29 @@
     
     // 現在の保持ポイント
     gm.totalPoint = [defaults integerForKey:@"totalPoint"];
-    
     [gm updateFruitCurrentLevelList];
+    
+    // 木に成っている果実
+    NSData *data = [defaults objectForKey:@"fruitsOnTreeDictionary"];
+    if (data != nil) {
+        gm.fruitsOnTreeDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
     
     // コレクション情報
     NSArray *collectionArray = [defaults arrayForKey:@"collections"];
-    [CollectionManager sharedCollectionManager].collections
+    if (collectionArray != nil) {
+        [CollectionManager sharedCollectionManager].collections
         = [NSMutableArray arrayWithArray:collectionArray];
+    }
+    
+    // アプリ終了時間
+    NSDate* finDate = [defaults objectForKey:@"finDate"];
+    if (finDate != nil) {
+        NSDate* now = [NSDate date];
+        NSTimeInterval duration = [now timeIntervalSinceDate:finDate];
+        //GameManager* gameManager = [GameManager sharedGameManager];
+        //[gameManager checkStatusByLaunchApplication:duration];
+    }
 }
 
 // データを保存する
@@ -121,16 +134,24 @@
     GameManager *gm = [GameManager sharedGameManager];
     
     // 木レベル
-    LOG(@"gm.treeLevel = %d", gm.treeLevel);
     [defaults setInteger:gm.treeLevel forKey:@"treeLevel"];
     
     // 現在の保持ポイント
     [defaults setInteger:gm.totalPoint forKey:@"totalPoint"];
     
+    // 木に成っている果実
+    LOG(@"fruits = %@", gm.fruitsOnTreeDictionary);
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:gm.fruitsOnTreeDictionary];
+    [defaults setObject:data forKey:@"fruitsOnTreeDictionary"];
+    
     // コレクション情報
     NSMutableArray *collectionMutableArray = [CollectionManager sharedCollectionManager].collections;
     NSArray *collectionArray = [NSArray arrayWithArray:collectionMutableArray];
     [defaults setObject:collectionArray forKey:@"collections"];
+    
+    //　アプリ終了時間
+    NSDate* finDate = [NSDate date];
+    [defaults setObject:finDate forKey:@"finDate"];
     
     [defaults synchronize];
 }

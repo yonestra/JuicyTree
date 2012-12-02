@@ -78,11 +78,15 @@
     [notificationCenter addObserver:self selector:@selector(pointUp:) name:NOTIFICATION_POINT_UP object:nil];
     [notificationCenter addObserver:self selector:@selector(levelUpTree:) name:NOTIFICATION_LELEL_UP_TREE object:nil];
     
+    // ポップアップを作っておく
     popUpWindow = [[PopUpWindowView alloc] initWithFrame:CGRectMake(10, 150, 300, 150)
                                                                      type:0
                                                                   message:@"レベルアップしました！"];
     popUpWindow.delegate = self;
     [self.view addSubview:popUpWindow];
+    
+    [gameManager initFruitArrayOnTree];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -14,7 +14,7 @@ enum FRUITS {
     HATENA = 999
 };
 
-@interface Fruits : NSObject <NSCopying> {
+@interface Fruits : NSObject <NSCopying, NSCoding> {
     NSInteger identifier;
     NSString* name;
     NSString* imageName;

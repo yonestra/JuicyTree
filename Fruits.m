@@ -45,6 +45,24 @@
     return copy;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeInteger:identifier forKey:@"identifier"];
+    [aCoder encodeObject:name forKey:@"name"];
+    [aCoder encodeObject:imageName forKey:@"imageName"];
+    [aCoder encodeInteger:points forKey:@"points"];
+    [aCoder encodeInteger:positionId forKey:@"positionId"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self.identifier = [aDecoder decodeIntegerForKey:@"identifier"];
+    self.name = [aDecoder decodeObjectForKey:@"name"];
+    self.imageName = [aDecoder decodeObjectForKey:@"imageName"];
+    self.points = [aDecoder decodeIntegerForKey:@"points"];
+    self.positionId = [aDecoder decodeIntegerForKey:@"positionId"];
+    
+    return self;
+}
+
 @end
 
 

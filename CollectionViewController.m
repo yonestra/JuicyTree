@@ -99,7 +99,7 @@
 
 // ページャの「→」が押された。一つ先のページへ進む
 - (void)pushNextButton {
-    if (page < 15) {
+    if (page < COLLECTION_PAGE_NUMBER-1) {
         page++;
     }
     [self reload];
@@ -108,7 +108,7 @@
 // コレクションビューを再描画する
 -(void)reload {
     // 現在のページ番号をセット
-    pageLabel.text = [NSString stringWithFormat:@"%d/16", page+1];
+    pageLabel.text = [NSString stringWithFormat:@"%d/%d", page+1, COLLECTION_PAGE_NUMBER];
     
     if (fruitSetView != nil) {
         [fruitSetView removeFromSuperview];
